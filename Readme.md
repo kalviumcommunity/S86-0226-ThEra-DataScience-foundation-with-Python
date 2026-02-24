@@ -93,6 +93,58 @@ Recognizing these limitations is important for responsible analysis.
 
 ---
 
+## 🛠️ Environment Verification (Milestone 1)
+
+This section documents the verification of the Data Science environment as required for the sprint. The goal is to ensure a stable, reproducible setup for all future work.
+
+### 1. Operating System
+- **Windows**
+
+### 2. Python Verification
+- **Command:** `python --version`
+- **Output:**
+	```
+	Python 3.X.X
+	```
+- **Python REPL test:**
+	```
+	>>> print("Hello, Data Science!")
+	Hello, Data Science!
+	```
+
+### 3. Conda Verification
+- **Command:** `conda --version`
+- **Output:**
+	```
+	conda X.X.X
+	```
+- **List environments:** `conda env list`
+- **Activate environment:** `conda activate base`
+- **Confirmation:** Prompt shows `(base)` or your environment name
+
+### 4. Jupyter Verification
+- **Command:** `jupyter notebook` or `jupyter lab`
+- **Result:** Jupyter launches in browser without errors
+- **Notebook test:**
+	- Created a new notebook
+	- Ran a Python cell:
+		```python
+		print("Jupyter is working!")
+		```
+	- Output displays as expected
+
+### 5. Summary
+- All core tools (Python, Conda, Jupyter) are installed and functional
+- Environment is ready for Data Science workflows
+
+---
+
+**Proof of Verification:**
+- Terminal screenshots and a short walkthrough video are included in the PR
+- This section certifies that the local setup is sprint-ready and reproducible
+
+---
+
 ## 🚀 Contribution Readiness
 This repository is structured to make collaboration easier.
 
