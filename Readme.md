@@ -146,5 +146,26 @@ This section is optional, and learners who want to explore the topics covered so
 ## Related Topics
 - Launching Jupyter Notebook and Understanding the Home Interface
 - Running, Restarting, and Interrupting Jupyter Kernels
+ 
+---
+
+## **Kernel Control: Running, Interrupting, Restarting**
+
+This section provides a short, hands-on demonstration of kernel control (run, interrupt, restart) to help you keep notebook state predictable.
+
+- **Example notebook:** [kernel_control.ipynb](kernel_control.ipynb)
+- **What to do:** Open the example notebook, run cells in order, interrupt the long-running cell, then restart the kernel and observe state being cleared.
+
+Recording checklist (video, ~2 minutes):
+
+- Show running the simple setup cell (define a variable) and its output.
+- Start the long-running cell and then interrupt it using the Jupyter menu (Kernel -> Interrupt).
+- Show the notebook remains responsive after interrupting.
+- Restart the kernel (Kernel -> Restart) and run the cell that checks for the variable — demonstrate it's gone.
+- Rerun setup cells from the top and explain why Restart + Rerun ensures reproducibility.
+
+Submission: include a short screen-capture video and the example notebook. Add the video link here when ready:
+
+Video link: <your-video-link-here>
 
 
