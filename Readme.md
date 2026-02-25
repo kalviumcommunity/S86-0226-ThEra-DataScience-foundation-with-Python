@@ -1,175 +1,97 @@
-# 📊 Data Science Lifecycle: From Question to Insight
+# Milestone: Launching Jupyter Notebook and Understanding the Home Interface
 
-## 📌 Overview
-This repository represents a structured approach to solving a data-driven problem by following the data science lifecycle. Instead of directly jumping into coding or analysis, the focus is on understanding how a problem is framed, how data is used as evidence, and how insights are generated.
+## Overview
+This milestone is about mastering the basics of Jupyter Notebook navigation and file management before starting any data science work. You will learn to launch Jupyter Notebook, understand its interface, navigate folders, and manage notebook files confidently.
 
-The project is organized to reflect each stage of the lifecycle—from defining the question to deriving meaningful conclusions—so that anyone exploring the repository can easily understand the flow of work and the decisions made along the way.
+## Why This Matters
+Many early data science issues arise from:
+- Running notebooks from the wrong directory
+- Creating files in unintended locations
+- Losing track of datasets or notebooks
+- Confusion about which environment or kernel is active
 
----
+This milestone ensures:
+- Your notebooks live where your project expects them
+- Your data, notebooks, and scripts stay organized
+- You avoid silent workflow mistakes early in the sprint
 
-## 🎯 Problem Understanding
-Every data science project begins with a clear question.
+## What You Are Expected to Do
+This is a navigation and familiarity milestone, not an analysis task. You are expected to:
+1. Launch Jupyter Notebook from the terminal
+2. Understand the Home interface layout
+3. Navigate folders intentionally
+4. Create and open a notebook
+5. Verify that the notebook runs correctly
+6. Manage notebook files (rename, save, close, reopen)
 
-In this project, the focus is on:
-- Identifying a real-world problem or area of curiosity  
-- Converting it into a clear, specific, and actionable question  
-- Understanding the context in which the answer will be used  
-
-This step ensures that the analysis remains focused and meaningful rather than just exploring data without direction.
-
----
-
-## 📂 Repository Structure & Workflow
-The repository is organized to reflect different stages of the data science lifecycle:
-
-- **data/** → Contains raw or processed datasets used for analysis  
-- **notebooks/** → Includes exploratory analysis and step-by-step investigation  
-- **src/** → Reusable scripts or functions (if applicable)  
-- **reports/ or outputs/** → Final insights, visualizations, or summaries  
-
-This structure helps distinguish between:
-- Exploratory work vs finalized outputs  
-- Raw data vs processed data  
-- Analysis vs conclusions  
+No data analysis or modeling is required.
 
 ---
 
-## 📄 Role of README
-This README serves as the entry point to the project. It provides:
+### 1. Launching Jupyter Notebook
+- Ensure the correct Conda environment is active
+- Launch Jupyter using the terminal command:
+  ```
+  jupyter notebook
+  ```
+- Confirm that Jupyter opens in your web browser without errors
+- Pay attention to the directory from which Jupyter is launched, as this determines the root folder shown in the interface
 
-- A clear understanding of the problem being addressed  
-- An overview of the dataset and its limitations  
-- The approach followed during analysis  
-- Guidance on how the repository is structured  
+### 2. Understanding the Jupyter Home Interface
+Once Jupyter opens, explore the Home interface. Identify:
+- The file and folder listing area
+- Navigation breadcrumbs
+- Buttons for creating new files and notebooks
+- Indicators for file types (folders, notebooks, scripts)
 
-It is designed to help anyone quickly understand the intent of the project without needing to go through every file.
+### 3. Navigating Project Folders
+- Move into and out of directories
+- Locate your project folder
+- Understand how folder navigation maps to your local file system
 
----
+### 4. Creating and Opening a Notebook
+- Create a notebook in the correct folder
+- Open the notebook
+- Confirm that it uses the expected Python kernel
+- Run a simple cell to ensure the notebook executes correctly
 
-## 📊 Understanding the Data
-Data in this project is treated as evidence, not absolute truth.
-
-Key considerations:
-- Data sources may include files, APIs, or collected datasets  
-- Data may contain missing values, inconsistencies, or biases  
-- Not all datasets perfectly represent real-world scenarios  
-
-Before analysis, the data is evaluated to determine whether it is suitable for answering the problem.
-
----
-
-## 🔍 Exploratory Data Analysis (EDA)
-Before making conclusions, the project focuses on exploring the data.
-
-This includes:
-- Understanding distributions and patterns  
-- Identifying anomalies or unusual values  
-- Using basic statistics and visualizations  
-
-The goal is to observe and understand the data first, rather than jumping to predictions or conclusions.
-
----
-
-## 💡 Insights & Interpretation
-After exploration, observations are converted into meaningful insights.
-
-- Findings are connected back to the original question  
-- Results are explained clearly and simply  
-- Limitations and uncertainties are acknowledged  
-
-This ensures that conclusions are realistic and supported by data.
+### 5. Notebook File Management Basics
+- Rename a notebook
+- Save changes
+- Close the notebook safely
+- Reopen it from the Home interface
 
 ---
 
-## ⚠️ Assumptions & Limitations
-Every data science project involves assumptions.
+### 6. Video Walkthrough (~2 Minutes)
+Record a short screen-capture video demonstrating your understanding. Your video must include:
+- Launching Jupyter Notebook from the terminal
+- A walkthrough of the Home interface
+- Navigating folders
+- Creating and opening a notebook
+- Running a simple cell
 
-In this project:
-- Data quality and completeness may affect results  
-- Some patterns may not generalize beyond the dataset  
-- Certain questions may remain partially unanswered  
-
-Recognizing these limitations is important for responsible analysis.
-
----
-
-## 🛠️ Environment Verification (Milestone 1)
-
-This section documents the verification of the Data Science environment as required for the sprint. The goal is to ensure a stable, reproducible setup for all future work.
-
-### 1. Operating System
-- **Windows**
-
-### 2. Python Verification
-- **Command:** `python --version`
-- **Output:**
-	```
-	Python 3.X.X
-	```
-- **Python REPL test:**
-	```
-	>>> print("Hello, Data Science!")
-	Hello, Data Science!
-	```
-
-### 3. Conda Verification
-- **Command:** `conda --version`
-- **Output:**
-	```
-	conda X.X.X
-	```
-- **List environments:** `conda env list`
-- **Activate environment:** `conda activate base`
-- **Confirmation:** Prompt shows `(base)` or your environment name
-
-### 4. Jupyter Verification
-- **Command:** `jupyter notebook` or `jupyter lab`
-- **Result:** Jupyter launches in browser without errors
-- **Notebook test:**
-	- Created a new notebook
-	- Ran a Python cell:
-		```python
-		print("Jupyter is working!")
-		```
-	- Output displays as expected
-
-### 5. Summary
-- All core tools (Python, Conda, Jupyter) are installed and functional
-- Environment is ready for Data Science workflows
+**Submission Guidelines:**
+- Submit your work as a Pull Request (if required)
+- Submit the video link as instructed
+- Video should be approximately 2 minutes
+- Video must be screen-facing and clearly visible
+- Keep explanations concise and focused on navigation and understanding
 
 ---
 
-**Proof of Verification:**
-- Terminal screenshots and a short walkthrough video are included in the PR
-- This section certifies that the local setup is sprint-ready and reproducible
+## Important Notes
+- This milestone is about orientation and confidence, not analysis
+- Do not start EDA or data loading yet
+- Always be aware of the folder you are working in
+- Treat notebooks as project artifacts, not temporary scratchpads
+
+Understanding Jupyter’s workspace early prevents disorganization later. This milestone ensures you can navigate, create, and manage notebooks intentionally throughout the Data Science sprint.
 
 ---
 
-## 🚀 Contribution Readiness
-This repository is structured to make collaboration easier.
+## Bonus Content (Optional)
+- [Jupyter/IPython Notebook Quick Start Guide](https://jupyter-notebook.readthedocs.io/en/stable/notebook.html)
+- [Get Started With Jupyter Notebook For Python](https://realpython.com/jupyter-notebook-introduction/)
 
-By understanding the project:
-- Contributors can avoid duplicating work  
-- Changes can be made in the correct sections  
-- Improvements can be suggested in analysis or documentation  
-
-This promotes meaningful and organized contributions.
-
----
-
-## ✅ Key Takeaways
-By exploring this repository, you will be able to:
-
-- Understand how a data science problem is structured  
-- Navigate a repository using its README and folder organization  
-- Interpret notebooks and analysis flow  
-- Identify gaps, assumptions, and improvement areas  
-- Connect data analysis to real-world decision-making  
-
----
-
-## 📚 Bonus Resources (Optional)
-- What is a Data Science Lifecycle?  
-- 9 Steps of Data Science Lifecycle With Challenges  
-- Data Science Lifecycle Model with Diagram  
 
