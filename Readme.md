@@ -1,123 +1,170 @@
-# Milestone 4.8: Understanding Notebook Cells: Code vs Markdown
+# Milestone 4.10: Writing Markdown for Headings, Lists, and Code Blocks in Notebooks
 
 ## Overview
-This milestone focuses on one of the most important fundamentals of working in Jupyter Notebooks: understanding the difference between **Code cells** and **Markdown cells**, and knowing when to use each.
+This milestone focuses on writing clear, readable documentation inside Jupyter Notebooks using Markdown. While code performs the analysis, **Markdown explains the intent, logic, and results**—making notebooks understandable to others and to your future self.
 
-Notebooks are not just places to run code. They are **living documents** that combine execution and explanation. Learning to use cells correctly is essential for readable, reviewable, and professional Data Science work.
+Well-written Markdown transforms notebooks from messy scratchpads into professional, review-ready artifacts that clearly communicate your thinking throughout the Data Science sprint.
 
 ## Learning Objectives
 This lesson is to help you:
 
-- Clearly distinguish between Code cells and Markdown cells
-- Understand the role each cell type plays in a notebook
-- Use cells intentionally to separate execution from explanation
-- Build notebooks that are readable to others, not just runnable
+- Understand what Markdown cells are and how they differ from code cells
+- Write headings to structure notebooks logically
+- Create ordered and unordered lists for clarity
+- Add inline code and code blocks for explanation
+- Combine text and code to tell a clear data story
 
 By completing this milestone, you will be able to:
 
-- Create and switch between Code and Markdown cells
-- Execute Code cells correctly
-- Write basic Markdown to explain what your code is doing
-- Structure a notebook so that logic and explanation are clearly separated
+- Structure notebooks using meaningful headings
+- Document steps and assumptions using Markdown text
+- Use lists to explain workflows and results
+- Format code snippets inside Markdown cells
+- Create notebooks that are readable and review-friendly
 
 ## Why This Matters
-A common beginner mistake is:
+Common notebook issues include:
 
-- Writing explanations inside code comments only
-- Leaving notebooks as long, unexplained code dumps
-- Mixing reasoning and execution in unreadable ways
+- Notebooks that are hard to follow or review
+- No explanation of what the code is doing
+- Results shown without context or interpretation
+- Confusing execution flow with no structure
 
-In real DS workflows:
+**These issues are not technical failures—they are communication failures.**
 
-- **Code shows what you did**
-- **Markdown explains why you did it and what it means**
+This milestone ensures that:
 
-This milestone ensures your notebooks are:
+- Your reasoning is clearly documented
+- Reviewers can understand your approach
+- Teammates can follow and reuse your work
+- Your notebooks look professional and intentional
 
-- Understandable to teammates and reviewers
-- Easier to debug and extend
-- Aligned with professional DS practices
+**Think of Markdown as the narration of your analysis**—this lesson teaches you how to write that narration clearly.
 
 ## What You Are Expected to Do
-This is a **fundamentals and structure milestone**, not a data analysis task.
+This is a **documentation and communication milestone**, not a data analysis task.
 
 You are expected to:
 
-- Create both Code and Markdown cells
-- Use each cell type correctly
-- Demonstrate intentional notebook structure
-- Explain code behavior using Markdown, not just comments
+- Create Markdown cells alongside code cells
+- Practice formatting text using Markdown syntax
+- Focus on clarity and structure, not complex analysis
+- Use simple examples to demonstrate formatting
 
-**No dataset or analysis is required.**
+**No datasets or advanced computations are required.**
 
 ---
 
-## 1. Understanding Code Cells
-Code cells are used to **execute Python code**.
+## 1. Writing Headings in Markdown
+Use headings to organize notebook sections.
 
 You should:
 
-- Write simple Python statements in Code cells
-- Execute cells and observe outputs
-- Understand that only Code cells run computations
+- Create top-level headings for major sections
+- Use subheadings to break content into steps
+- Maintain a logical, readable hierarchy
+- Avoid overly long or vague headings
 
-**Code cells should contain logic, not explanations.**
+**This helps readers understand the notebook flow instantly.**
+
+### Example Heading Structure:
+```
+# Main Analysis Title
+## Step 1: Data Loading
+### Loading CSV Files
+## Step 2: Data Cleaning
+### Handling Missing Values
+```
 
 ---
 
-## 2. Understanding Markdown Cells
-Markdown cells are used to **explain, describe, and structure** your notebook.
+## 2. Creating Lists for Structured Explanations
+Use lists to explain steps, assumptions, or results.
 
 You should:
 
-- Convert a cell to Markdown
-- Write headings, short paragraphs, and bullet points
-- Use Markdown to explain what the next Code cell will do or what the output means
+- Write **unordered lists** for general points
+- Write **ordered lists** for step-by-step processes
+- Keep list items concise and meaningful
+- Use lists where structure improves readability
 
-**Markdown cells should contain reasoning and narrative, not code execution.**
+**Lists make explanations easier to scan and understand.**
+
+### Example Usage:
+**Unordered list for assumptions:**
+- Dataset contains no duplicate records
+- All dates are in ISO format
+- Missing values are marked as NaN
+
+**Ordered list for workflow:**
+1. Load the raw data
+2. Remove duplicates
+3. Handle missing values
+4. Export cleaned dataset
 
 ---
 
-## 3. Switching Between Cell Types
-Practice switching cells between Code and Markdown.
+## 3. Writing Inline Code and Code Blocks
+Use code formatting inside Markdown to explain syntax.
 
 You should:
 
-- Create new cells of each type
-- Convert existing cells between types
-- Understand when and why to choose one over the other
+- Use **inline code** for variable names or functions
+- Use **fenced code blocks** for longer snippets
+- Ensure code blocks are readable and relevant
+- Avoid duplicating executable code unnecessarily
 
-This ensures you can fix mistakes and structure notebooks cleanly.
+**This allows you to explain code without executing it.**
+
+### Example:
+- Use `pandas.read_csv()` to load the data
+- The variable `df` stores the DataFrame
+- Here's the basic syntax:
+  ```python
+  import pandas as pd
+  df = pd.read_csv('data.csv')
+  ```
 
 ---
 
-## 4. Structuring a Simple Notebook
-Create a short notebook structure such as:
+## 4. Combining Markdown and Code Cells Effectively
+Learn when to use Markdown vs code.
 
-- A Markdown title at the top
-- A Markdown cell explaining the purpose of the notebook
-- One or two Code cells with simple Python commands
-- Markdown cells explaining what each Code cell does
+You should:
 
-**The goal is clarity, not complexity.**
+- Use **Markdown before code** to explain intent
+- Use **Markdown after code** to interpret output
+- Avoid placing explanations inside code comments
+- Maintain a clean alternation between text and code
+
+**This creates a smooth narrative flow in notebooks.**
+
+### Best Practice Structure:
+```
+[Markdown] → Explain what you're about to do
+[Code] → Execute the operation
+[Markdown] → Interpret the result
+```
 
 ---
 
 ## 5. Video Walkthrough (~2 Minutes)
-Record a short screen-capture video demonstrating your understanding.
+Record a short screen-capture video demonstrating Markdown usage.
 
 Your video must include:
-- Creating a Code cell and running it
-- Creating a Markdown cell and rendering it
-- Switching a cell type
-- Explaining when to use Code vs Markdown
 
-This validates both understanding and correct usage.
+- Creating a Markdown cell
+- Writing headings and lists
+- Adding inline code and code blocks
+- Switching between Markdown and code cells
+- Brief explanation of why documentation matters
+
+**This validates both understanding and correct usage.**
 
 ---
 
 ## Submission Guidelines
-- Submit your work as a Pull Request (if required by the assignment)
+- Submit your work as a Pull Request (if required)
 - Submit the video link as instructed
 - Video should be approximately 2 minutes
 - Video must be screen-facing and clearly visible
@@ -125,47 +172,41 @@ This validates both understanding and correct usage.
 ---
 
 ## Important Notes
-- This milestone is about **intentional notebook writing**
-- Do not perform EDA or load datasets
-- Keep examples simple and focused
-- Treat notebooks as documents meant to be read by humans
+- This milestone focuses on **communication, not analysis**
+- Keep examples simple and intentional
+- Use Markdown consistently throughout notebooks
+- Well-documented notebooks are easier to debug and review
 
-**Using Code and Markdown correctly is a core professional habit.** This milestone ensures you can write notebooks that communicate, not just compute, throughout the Data Science sprint.
+**Clear Markdown improves collaboration, reproducibility, and professionalism.** This milestone ensures your notebooks communicate as well as they compute.
 
 ---
 
 ## Bonus Content (Optional)
 This section is optional, and learners who want to explore the topics covered so far can utilize the materials provided below.
 
-- [Code and Markdown Cells in Jupyter Notebook](https://jupyter-notebook.readthedocs.io/en/stable/notebook.html)
-- [The Ultimate Markdown Guide (for Jupyter Notebook)](https://medium.com/analytics-vidhya/the-ultimate-markdown-guide-for-jupyter-notebook-d5e5abf728fd)
-- [Combining code and text with Jupyter](https://programminghistorian.org/en/lessons/jupyter-notebooks)
+### Markdown Cells
+- [Markdown in Jupyter Notebook Tutorial](https://www.datacamp.com/tutorial/markdown-in-jupyter-notebook)
+- [Markdown for Jupyter notebooks cheatsheet](https://medium.com/ibm-data-science-experience/markdown-for-jupyter-notebooks-cheatsheet-386c05aeebed)
 
 ---
 
 ## Related Topics
-- Launching Jupyter Notebook and Understanding the Home Interface
 - Running, Restarting, and Interrupting Jupyter Kernels
- 
+- Creating a Project Folder Structure for Data Science Work
+
 ---
 
-## **Kernel Control: Running, Interrupting, Restarting**
+## Assignment
+**Target:** Get 60% or more  
+**Time:** 180 minutes
 
-This section provides a short, hands-on demonstration of kernel control (run, interrupt, restart) to help you keep notebook state predictable.
+Complete this assignment to show your understanding of the concepts you've learned.
 
-- **Example notebook:** [kernel_control.ipynb](kernel_control.ipynb)
-- **What to do:** Open the example notebook, run cells in order, interrupt the long-running cell, then restart the kernel and observe state being cleared.
+---
 
-Recording checklist (video, ~2 minutes):
+## Video Submission
+Add your video link here when ready:
 
-- Show running the simple setup cell (define a variable) and its output.
-- Start the long-running cell and then interrupt it using the Jupyter menu (Kernel -> Interrupt).
-- Show the notebook remains responsive after interrupting.
-- Restart the kernel (Kernel -> Restart) and run the cell that checks for the variable — demonstrate it's gone.
-- Rerun setup cells from the top and explain why Restart + Rerun ensures reproducibility.
-
-Submission: include a short screen-capture video and the example notebook. Add the video link here when ready:
-
-Video link: <your-video-link-here>
+**Video link:** `<your-video-link-here>`
 
 
