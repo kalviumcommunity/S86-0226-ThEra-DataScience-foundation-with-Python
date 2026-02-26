@@ -1,2 +1,6 @@
-# Placeholder for raw and processed data files.
-# Store original datasets here. Do not edit raw data directly.
+# Top-level data directory. Subfolders separate stages.
+# Use `raw/` for original, unmodified inputs and
+# `processed/` for cleaned or transformed datasets.
+# Do NOT put actual files here; keep it empty except for
+# these placeholder files so Git tracks the directories.
+# Raw data must be treated as read-only evidence.
