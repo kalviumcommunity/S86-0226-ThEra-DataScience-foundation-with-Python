@@ -172,12 +172,40 @@ Your video must include:
 ---
 
 ## Important Notes
-- This milestone focuses on **communication, not analysis**
-- Keep examples simple and intentional
-- Use Markdown consistently throughout notebooks
-- Well-documented notebooks are easier to debug and review
 
 **Clear Markdown improves collaboration, reproducibility, and professionalism.** This milestone ensures your notebooks communicate as well as they compute.
+Data Science Project Organization: Milestone Guide
+
+This project demonstrates a standard, professional folder structure for Data Science work. Good organization ensures clarity, reproducibility, and smooth collaboration.
+
+## Project Folder Structure
+
+```
+project/
+├── data/       # Raw and processed datasets (do not edit raw data)
+├── notebooks/  # Jupyter notebooks for exploration and analysis
+├── scripts/    # Python scripts for reusable code and automation
+├── outputs/    # Generated results, figures, and model outputs
+└── README.md   # Explains the structure and best practices
+```
+
+### Folder Roles
+- **data/**: Store all datasets. Keep raw data unchanged.
+- **notebooks/**: For all Jupyter notebooks (exploration, analysis, reporting).
+- **scripts/**: For standalone Python scripts (data processing, modeling, automation).
+- **outputs/**: For generated results, figures, and models. Never overwrite raw data.
+
+## Best Practices
+- Keep code, data, and outputs separate.
+- Use clear, consistent folder names.
+- Avoid deeply nested folders.
+- Make paths predictable for easy collaboration.
+
+## Why Structure Matters
+Proper organization prevents lost files, broken paths, and confusion. It makes your work easier to debug, share, and review, and is essential for professional Data Science projects.
+
+---
+**Tip:** Use this structure as a template for all your future Data Science projects!
 
 ---
 
