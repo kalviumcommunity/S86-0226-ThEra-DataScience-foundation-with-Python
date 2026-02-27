@@ -4,19 +4,15 @@
 This milestone focuses on writing clear, readable documentation inside Jupyter Notebooks using Markdown. While code performs the analysis, **Markdown explains the intent, logic, and results**—making notebooks understandable to others and to your future self.
 
 Well-written Markdown transforms notebooks from messy scratchpads into professional, review-ready artifacts that clearly communicate your thinking throughout the Data Science sprint.
-
 ## Learning Objectives
 This lesson is to help you:
 
-- Understand what Markdown cells are and how they differ from code cells
+
 - Write headings to structure notebooks logically
 - Create ordered and unordered lists for clarity
 - Add inline code and code blocks for explanation
 - Combine text and code to tell a clear data story
 
-By completing this milestone, you will be able to:
-
-- Structure notebooks using meaningful headings
 - Document steps and assumptions using Markdown text
 - Use lists to explain workflows and results
 - Format code snippets inside Markdown cells
@@ -70,12 +66,7 @@ You should:
 ### Example Heading Structure:
 ```
 # Main Analysis Title
-## Step 1: Data Loading
-### Loading CSV Files
-## Step 2: Data Cleaning
-### Handling Missing Values
 ```
-
 ---
 
 ## 2. Creating Lists for Structured Explanations
@@ -120,17 +111,13 @@ You should:
 - Use `pandas.read_csv()` to load the data
 - The variable `df` stores the DataFrame
 - Here's the basic syntax:
-  ```python
+
   import pandas as pd
   df = pd.read_csv('data.csv')
   ```
 
 ---
 
-## 4. Combining Markdown and Code Cells Effectively
-Learn when to use Markdown vs code.
-
-You should:
 
 - Use **Markdown before code** to explain intent
 - Use **Markdown after code** to interpret output
@@ -154,15 +141,9 @@ Record a short screen-capture video demonstrating Markdown usage.
 Your video must include:
 
 - Creating a Markdown cell
-- Writing headings and lists
-- Adding inline code and code blocks
 - Switching between Markdown and code cells
 - Brief explanation of why documentation matters
-
-**This validates both understanding and correct usage.**
-
 ---
-
 ## Submission Guidelines
 - Submit your work as a Pull Request (if required)
 - Submit the video link as instructed
