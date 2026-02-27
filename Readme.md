@@ -120,17 +120,13 @@ You should:
 - Use `pandas.read_csv()` to load the data
 - The variable `df` stores the DataFrame
 - Here's the basic syntax:
-  ```python
+
   import pandas as pd
   df = pd.read_csv('data.csv')
   ```
 
 ---
 
-## 4. Combining Markdown and Code Cells Effectively
-Learn when to use Markdown vs code.
-
-You should:
 
 - Use **Markdown before code** to explain intent
 - Use **Markdown after code** to interpret output
@@ -154,15 +150,9 @@ Record a short screen-capture video demonstrating Markdown usage.
 Your video must include:
 
 - Creating a Markdown cell
-- Writing headings and lists
-- Adding inline code and code blocks
 - Switching between Markdown and code cells
 - Brief explanation of why documentation matters
-
-**This validates both understanding and correct usage.**
-
 ---
-
 ## Submission Guidelines
 - Submit your work as a Pull Request (if required)
 - Submit the video link as instructed
