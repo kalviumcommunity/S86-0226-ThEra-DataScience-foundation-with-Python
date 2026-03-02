@@ -175,3 +175,17 @@ To satisfy the assignment requirements, the following steps have been completed:
 By following this organization, you avoid accidental overwrites, maintain
 reproducibility, and make it easier for others (or future you) to follow
 your work.
+
+---
+
+## Milestone: Python Conditional Statements
+
+This milestone provides a compact demonstration of conditional logic in Python.
+
+- Demo script: `scripts/conditionals_milestone.py` (basic `if`, `if-else`, `if-elif-else`, logical operators)
+- Checkpoint file: `checkpoints/conditionals_checkpoint.txt`
+
+Run the demo from the project root:
+```bash
+python scripts/conditionals_milestone.py
+```
