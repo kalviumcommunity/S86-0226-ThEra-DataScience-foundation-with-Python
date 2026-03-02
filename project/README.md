@@ -19,6 +19,97 @@ This structure helps your project scale, remain organized, and be easy for other
 
 ---
 
+
+## Milestone: Using for and while Loops for Iterative Data Processing
+
+This milestone focuses on using **for** and **while** loops to perform iterative data processing in Python. Loops allow you to repeat operations efficiently, which is essential when working with collections, sequences, and repeated logic in real-world programs.
+
+### Learning Objectives
+
+By completing this milestone, you will be able to:
+- ✅ Write for loops to process sequences and collections
+- ✅ Write while loops for condition-based repetition
+- ✅ Control loops using break and continue
+- ✅ Recognize and fix infinite loop scenarios
+- ✅ Use loops confidently in data workflows
+
+### Why This Matters
+Common beginner issues include:
+- Writing repetitive code instead of loops
+- Creating infinite loops accidentally
+- Using the wrong loop type for a task
+- Difficulty understanding loop flow
+
+This milestone ensures that:
+- Your code is concise and maintainable
+- Repetitive tasks are handled cleanly
+- Iteration logic behaves predictably
+- Data processing becomes scalable
+
+Think of loops as automation tools—this lesson teaches you how to use them safely and effectively.
+
+### What You Are Expected to Do
+This is a Python iteration milestone, not a data analysis task.
+
+You are expected to:
+- Write for loops and while loops
+- Iterate over lists or ranges
+- Use conditions to control loop execution
+- Print outputs to observe loop behavior
+No datasets or advanced libraries are required.
+
+#### 1. Using for Loops for Iteration
+Learn how for loops work.
+You should:
+- Iterate over a range of numbers
+- Iterate over a list or collection
+- Observe loop execution order
+- Use loop variables meaningfully
+for loops are ideal for known sequences.
+
+#### 2. Using while Loops for Condition-Based Repetition
+Learn how while loops work.
+You should:
+- Write a condition-controlled loop
+- Update loop variables correctly
+- Stop loops intentionally
+- Understand when while is appropriate
+while loops are useful when repetition depends on conditions.
+
+#### 3. Controlling Loop Flow
+Manage loop execution safely.
+You should:
+- Use break to exit loops early
+- Use continue to skip iterations
+- Avoid unnecessary or confusing logic
+- Keep loop flow readable
+Control statements prevent errors and inefficiency.
+
+#### 4. Avoiding Infinite Loops
+Understand common pitfalls.
+You should:
+- Identify causes of infinite loops
+- Ensure loop conditions change
+- Test loops with small examples
+- Stop execution safely if needed
+Preventing infinite loops saves time and frustration.
+
+#### 5. Video Walkthrough (~2 Minutes)
+For your video, demonstrate:
+- A for loop iterating over a range and a list
+- A while loop with a clear stopping condition
+- Use of break and continue
+- How to avoid infinite loops
+
+#### Demo Script
+See `scripts/loops_milestone.py` for a complete demonstration of all these concepts:
+
+```bash
+python scripts/loops_milestone.py
+```
+
+---
+
 ## Milestone: Working with Python Lists, Tuples, and Dictionaries
 
 This milestone focuses on mastering Python's core collection data structures—**lists**, **tuples**, and **dictionaries**. Understanding when and how to use each structure is essential for handling real-world data efficiently.
