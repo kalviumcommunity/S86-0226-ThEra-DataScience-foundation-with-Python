@@ -1,0 +1,15 @@
+Conditionals Milestone Checkpoint
+Date: 2026-03-02
+
+Completed items:
+- Created `scripts/conditionals_milestone.py` demonstrating:
+  - basic `if` checks
+  - `if`-`else` branching
+  - `if`-`elif`-`else` grading example
+  - logical operators: `and`, `or`, `not`
+- Added this checkpoint file to mark completion.
+
+Next steps for the student:
+- Run `python scripts/conditionals_milestone.py` from the project root to view outputs
+- Record a ~2 minute screen walkthrough demonstrating each example and explaining outcomes
+- Submit the video link and (optionally) open a PR if required
