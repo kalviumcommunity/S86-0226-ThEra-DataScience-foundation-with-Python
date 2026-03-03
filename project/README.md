@@ -269,14 +269,51 @@ your work.
 
 ---
 
-## Milestone: Python Conditional Statements
 
-This milestone provides a compact demonstration of conditional logic in Python.
+---
 
-- Demo script: `scripts/conditionals_milestone.py` (basic `if`, `if-else`, `if-elif-else`, logical operators)
-- Checkpoint file: `checkpoints/conditionals_checkpoint.txt`
+## Milestone: Structuring Python Code for Readability and Reuse
 
-Run the demo from the project root:
+This milestone focuses on organizing Python code for clarity, modularity, and maintainability. Well-structured code is easier to understand, debug, and extend, supporting collaboration and future development.
+
+### Learning Objectives
+
+By completing this milestone, you will be able to:
+- ✅ Structure Python scripts clearly with logical sections
+- ✅ Group related logic and use functions to reduce repetition
+- ✅ Separate setup, logic, and execution for clean code flow
+- ✅ Write code that is easy to read, reuse, and maintain
+
+### Why This Matters
+
+Unstructured code leads to confusion, bugs, and slow development. This milestone ensures your scripts:
+- Have a clear, predictable structure
+- Group logic for reusability
+- Are easier to debug and extend
+
+### What You Are Expected to Do
+
+- Organize code into logical sections (imports, variables, functions, execution)
+- Use functions to avoid repetition
+- Keep top-level execution minimal and readable
+- Focus on readability over cleverness
+
+### Demo Script
+
+See `scripts/readability_milestone.py` for a complete demonstration of code structuring, naming conventions, and readability best practices:
+
 ```bash
-python scripts/conditionals_milestone.py
+python scripts/readability_milestone.py
 ```
+
+Key principles illustrated:
+- Place imports at the top
+- Group variable definitions logically
+- Separate helper functions from execution logic
+- Maintain a clear top-to-bottom flow
+- Use descriptive names and comments
+- Avoid deeply nested or repetitive code
+
+By following these practices, your code will be easier to maintain, scale, and share with others.
+
+---
