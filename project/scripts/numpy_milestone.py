@@ -285,6 +285,42 @@ def compare_arrays_and_lists():
 # SECTION 6: Practical Use Case - Data Analysis Preparation
 # ============================================================================
 
+# ============================================================================
+# SECTION 7: Common Mistakes and Shape Errors in Array Math
+# ============================================================================
+def demonstrate_common_mistakes():
+    """
+    Show common mistakes when performing array math, such as shape mismatches and type issues.
+    """
+    print("=" * 70)
+    print("SECTION 7: Common Mistakes and Shape Errors in Array Math")
+    print("=" * 70)
+
+    # Shape mismatch error
+    arr1 = np.array([1, 2, 3])
+    arr2 = np.array([4, 5])
+    print("\n⚠️  Example: Shape Mismatch")
+    print(f"   arr1: {arr1} (shape: {arr1.shape})")
+    print(f"   arr2: {arr2} (shape: {arr2.shape})")
+    try:
+        result = arr1 + arr2
+    except ValueError as e:
+        print(f"   Error: {e}")
+
+    # Mixing incompatible data types
+    arr_int = np.array([1, 2, 3])
+    arr_str = np.array(['a', 'b', 'c'])
+    print("\n⚠️  Example: Mixing Incompatible Data Types")
+    print(f"   arr_int: {arr_int} (dtype: {arr_int.dtype})")
+    print(f"   arr_str: {arr_str} (dtype: {arr_str.dtype})")
+    try:
+        result = arr_int + arr_str
+    except TypeError as e:
+        print(f"   Error: {e}")
+
+    print("\n💡 Always check array shapes and data types before performing operations!")
+    print()
+
 def practical_use_case():
     """
     Show a practical scenario where arrays are essential for data preparation.
@@ -348,6 +384,8 @@ def run_all_examples():
     access_elements_and_visualize()
     compare_arrays_and_lists()
     practical_use_case()
+
+    demonstrate_common_mistakes()
     
     print("=" * 70)
     print("✅ MILESTONE COMPLETE!")
