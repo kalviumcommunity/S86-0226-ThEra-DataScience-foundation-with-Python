@@ -375,3 +375,55 @@ For your video submission, demonstrate:
 - Explaining how to avoid index errors
 
 ---
+
+## Milestone: Performing Basic Mathematical Operations on NumPy Arrays
+
+This milestone focuses on performing basic mathematical operations on NumPy arrays. NumPy allows you to apply operations to entire arrays at once, making numerical computation faster, cleaner, and more expressive than using Python loops or lists.
+
+### Learning Objectives
+By completing this milestone, you will be able to:
+- ✅ Add, subtract, multiply, and divide NumPy arrays
+- ✅ Apply scalar operations across arrays
+- ✅ Understand element-wise behavior clearly
+- ✅ Avoid common mistakes with array math
+- ✅ Use NumPy for efficient numerical computation
+
+### Why This Matters
+Common beginner issues include:
+- Using loops for simple numerical operations
+- Expecting Python list math to behave like NumPy
+- Writing verbose, inefficient code
+- Confusion around how operations are applied
+
+NumPy addresses these problems directly, ensuring your numerical code is concise, readable, and efficient.
+
+### What You Are Expected to Do
+This is a NumPy fundamentals milestone, not a data analysis task.
+
+You are expected to:
+- Create NumPy arrays
+- Perform basic arithmetic operations
+- Observe element-wise behavior
+- Print results to verify correctness
+
+### Demo Script
+See `scripts/numpy_milestone.py` for a complete demonstration of all these concepts:
+
+```bash
+python scripts/numpy_milestone.py
+```
+
+### Key Concepts Demonstrated
+- Element-wise array operations (addition, subtraction, multiplication, division)
+- Scalar operations on arrays (applying a single value to all elements)
+- Comparison of NumPy array math with Python list behavior
+- Common mistakes: shape mismatches, data type errors, and how to interpret them
+
+### Video Walkthrough Checklist
+For your video submission, demonstrate:
+- Adding, subtracting, multiplying, and dividing arrays
+- Applying scalar operations
+- Comparing array and list math
+- Showing and explaining common mistakes and errors
+
+---
