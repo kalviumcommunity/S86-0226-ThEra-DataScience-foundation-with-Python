@@ -317,3 +317,61 @@ Key principles illustrated:
 By following these practices, your code will be easier to maintain, scale, and share with others.
 
 ---
+
+## Milestone: Understanding Array Shape, Dimensions, and Index Positions in NumPy
+
+This milestone focuses on understanding array shape, dimensions, and index positions in NumPy. Correctly interpreting how data is laid out in an array is essential for accessing values safely, avoiding index errors, and writing correct numerical code.
+
+### Learning Objectives
+By completing this milestone, you will be able to:
+- ✅ Interpret array shapes confidently
+- ✅ Understand dimensions and axes
+- ✅ Access elements using proper indexing
+- ✅ Navigate rows and columns correctly
+- ✅ Prevent index-related bugs
+
+### Why This Matters
+Common beginner issues include:
+- Index errors due to incorrect positions
+- Confusion between rows and columns
+- Misunderstanding array dimensions
+- Incorrect assumptions about array layout
+
+This milestone ensures that:
+- You understand how data is stored in arrays
+- You can access and manipulate data correctly
+- Your code behaves predictably
+- You are ready for slicing and reshaping later
+
+### What You Are Expected to Do
+This is a NumPy fundamentals milestone, not a data analysis task.
+
+You are expected to:
+- Inspect array shape and dimensions
+- Work with 1D and 2D arrays
+- Access elements using index positions
+- Print results to observe behavior
+
+### Demo Script
+See `scripts/numpy_milestone.py` for a complete demonstration of all these concepts:
+
+```bash
+python scripts/numpy_milestone.py
+```
+
+### Key Concepts Demonstrated
+- Understanding array shape and what each number means
+- Identifying 1D, 2D, and higher-dimensional arrays
+- Using `.shape` and `.ndim` to inspect arrays
+- Accessing elements in 1D and 2D arrays using correct index positions
+- Visualizing array layout and mapping index positions to values
+- Avoiding common indexing mistakes (zero-based indexing, out-of-range errors)
+
+### Video Walkthrough Checklist
+For your video submission, demonstrate:
+- Inspecting array shape and dimensions
+- Accessing elements in 1D and 2D arrays
+- Visualizing array layout and index mapping
+- Explaining how to avoid index errors
+
+---
