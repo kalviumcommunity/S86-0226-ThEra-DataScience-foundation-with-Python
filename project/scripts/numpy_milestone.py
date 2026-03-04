@@ -146,6 +146,51 @@ def inspect_array_properties():
 # SECTION 4: Basic Operations on Arrays
 # ============================================================================
 
+# ============================================================================
+# SECTION 4A: Accessing Elements and Visualizing Array Layout
+# ============================================================================
+
+def access_elements_and_visualize():
+    """
+    Demonstrate accessing elements in 1D and 2D arrays and visualize their layout.
+    """
+    print("=" * 70)
+    print("SECTION 4A: Accessing Elements and Visualizing Array Layout")
+    print("=" * 70)
+
+    # 1D Array
+    arr_1d = np.array([10, 20, 30, 40, 50])
+    print("\n🔹 1D Array:")
+    print(f"   Array: {arr_1d}")
+    print("   Index positions:  0   1   2   3   4")
+    print("   Values:          10  20  30  40  50")
+    print(f"   arr_1d[2] = {arr_1d[2]}  # Access value at index 2")
+    print(f"   arr_1d[-1] = {arr_1d[-1]}  # Access last element (negative index)")
+
+    # 2D Array
+    arr_2d = np.array([[1, 2, 3],
+                       [4, 5, 6],
+                       [7, 8, 9]])
+    print("\n🔹 2D Array:")
+    print(arr_2d)
+    print("   Row indices:    0    1    2")
+    print("   Col indices:  0  1  2")
+    print("   Accessing arr_2d[1, 2] (row 1, col 2):", arr_2d[1, 2])
+    print("   Accessing arr_2d[0, 0] (row 0, col 0):", arr_2d[0, 0])
+    print("   Accessing arr_2d[-1, -1] (last row, last col):", arr_2d[-1, -1])
+
+    print("\n💡 Visualization:")
+    print("   Array as a grid (row, col):")
+    print("     [ [1, 2, 3],   # row 0")
+    print("       [4, 5, 6],   # row 1")
+    print("       [7, 8, 9] ]  # row 2")
+    print("   arr_2d[1, 2] → 6 (row 1, col 2)")
+    print("   arr_2d[2, 0] → 7 (row 2, col 0)")
+    print("   arr_2d[0, 1] → 2 (row 0, col 1)")
+
+    print("\n⚠️  Remember: Indexing is zero-based. arr_2d[3, 0] would cause an IndexError!")
+    print()
+
 def basic_array_operations():
     """
     Perform simple arithmetic operations on arrays.
@@ -300,6 +345,7 @@ def run_all_examples():
     create_arrays_from_lists()
     inspect_array_properties()
     basic_array_operations()
+    access_elements_and_visualize()
     compare_arrays_and_lists()
     practical_use_case()
     
@@ -311,6 +357,7 @@ def run_all_examples():
     print("  ✓ Created arrays from Python lists")
     print("  ✓ Inspected array properties")
     print("  ✓ Performed basic operations")
+    print("  ✓ Accessed elements and visualized array layout")
     print("  ✓ Understood arrays vs lists")
     print("\nYou're ready to work with real datasets using NumPy!")
     print()
