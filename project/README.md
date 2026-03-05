@@ -62,7 +62,6 @@ No datasets or advanced libraries are required.
 Learn how for loops work.
 You should:
 - Iterate over a range of numbers
-- Iterate over a list or collection
 - Observe loop execution order
 - Use loop variables meaningfully
 for loops are ideal for known sequences.
@@ -70,26 +69,13 @@ for loops are ideal for known sequences.
 #### 2. Using while Loops for Condition-Based Repetition
 Learn how while loops work.
 You should:
-- Write a condition-controlled loop
-- Update loop variables correctly
-- Stop loops intentionally
-- Understand when while is appropriate
-while loops are useful when repetition depends on conditions.
 
 #### 3. Controlling Loop Flow
 Manage loop execution safely.
-You should:
-- Use break to exit loops early
-- Use continue to skip iterations
-- Avoid unnecessary or confusing logic
 - Keep loop flow readable
 Control statements prevent errors and inefficiency.
 
 #### 4. Avoiding Infinite Loops
-Understand common pitfalls.
-You should:
-- Identify causes of infinite loops
-- Ensure loop conditions change
 - Test loops with small examples
 - Stop execution safely if needed
 Preventing infinite loops saves time and frustration.
@@ -97,46 +83,26 @@ Preventing infinite loops saves time and frustration.
 #### 5. Video Walkthrough (~2 Minutes)
 For your video, demonstrate:
 - A for loop iterating over a range and a list
-- A while loop with a clear stopping condition
-- Use of break and continue
-- How to avoid infinite loops
-
 #### Demo Script
 See `scripts/loops_milestone.py` for a complete demonstration of all these concepts:
 
 ```bash
 python scripts/loops_milestone.py
-```
-
----
-
 ## Milestone: Working with Python Lists, Tuples, and Dictionaries
 
 This milestone focuses on mastering Python's core collection data structures—**lists**, **tuples**, and **dictionaries**. Understanding when and how to use each structure is essential for handling real-world data efficiently.
 
 ### Learning Objectives
-
-By completing this milestone, you will be able to:
-- ✅ Create and use lists, tuples, and dictionaries
-- ✅ Access elements using indexing and keys
 - ✅ Modify lists and dictionaries correctly
 - ✅ Understand immutability in tuples
 - ✅ Organize structured data effectively
 - ✅ Choose the right data structure for a given task
-
-### Scripts Overview
-
-Four comprehensive Python scripts have been created in the `scripts/` folder to demonstrate all concepts:
 
 #### 1. **working_with_lists.py**
 Learn about Python lists—ordered and mutable collections.
 
 **Topics covered:**
 - Creating lists with multiple values
-- Accessing elements using indexes and slicing
-- Modifying, adding, and removing elements
-- Iterating over list items
-- Common list methods (sort, reverse, count, etc.)
 - List comprehensions
 
 **Run the script:**
@@ -162,7 +128,6 @@ python scripts/working_with_tuples.py
 
 #### 3. **working_with_dictionaries.py**
 Learn about Python dictionaries—key-value pair collections.
-
 **Topics covered:**
 - Creating dictionaries with meaningful keys
 - Accessing values using keys safely (.get() method)
