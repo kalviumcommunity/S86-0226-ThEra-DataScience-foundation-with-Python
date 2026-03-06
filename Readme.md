@@ -175,6 +175,31 @@ Rather than focusing only on predictions, the system emphasizes:
 
 ✔ Understanding the present  
 ✔ Identifying trends  
-✔ Supporting evidence-based decisions  
+✔ Supporting evidence-based decisions
 
 > "Before predicting the future, understand the present."
+
+---
+
+## 📝 Milestone Completed: Pandas DataFrame Basics
+
+As part of the course milestone on creating and inspecting Pandas DataFrames, the following steps were executed and documented:
+
+1. **Imported Pandas** (`import pandas as pd`).
+2. **Constructed a DataFrame from a dictionary**:
+   ```python
+   data = {'name': ['Alice', 'Bob', 'Carol'],
+           'age': [25, 30, 22],
+           'score': [88.5, 92.0, 79.5]}
+   df = pd.DataFrame(data)
+   ```
+3. **Loaded a DataFrame from a file** (CSV example):
+   ```python
+   df_file = pd.read_csv('project/data/processed/example_processed.csv')
+   ```
+4. **Inspected structure and contents** with methods such as `df.head()`, `df.columns`, `df.shape`, and `df.dtypes` to verify rows, columns, and data types.
+5. **Notes on common issues**: verified headers, checked for unexpected shapes, and ensured data types matched expectations.
+
+> The exercise focused strictly on DataFrame creation and inspection. No advanced cleaning or analysis was performed. The video walkthrough requirement was acknowledged but skipped as per instructions.
+
+This section serves as a record of having completed the DataFrame milestone and can be referenced for future tasks involving data loading and inspection.
