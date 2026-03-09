@@ -83,6 +83,50 @@ print("✓ Comprehensive sample dataset created")
 print()
 
 # =============================================================================
+# SECTION 0: Understanding DataFrame Shape & Column Data Types
+# =============================================================================
+print("SECTION 0: Understanding DataFrame Shape & Column data types")
+print("=" * 80)
+print()
+
+print("What is shape (df.shape)?")
+print("-" * 80)
+print("shape returns a tuple (rows, columns) representing the size of the DataFrame.")
+print("It is the most direct way to know how many records and variables you have.")
+print()
+
+print("Example: Checking the shape of df_sample")
+print("-" * 80)
+print(f"DataFrame shape: {df_sample.shape}")
+print(f"  - Rows (observations): {df_sample.shape[0]}")
+print(f"  - Columns (features): {df_sample.shape[1]}")
+print()
+
+print("What is dtypes (df.dtypes)?")
+print("-" * 80)
+print("dtypes shows the data type of each column, which controls what operations are valid.")
+print("Knowing the column types helps you find columns that may need conversion.")
+print()
+
+print("Example: Checking column data types")
+print("-" * 80)
+print(df_sample.dtypes)
+print()
+
+print("Summary of data types (value counts)")
+print("-" * 80)
+print(df_sample.dtypes.value_counts())
+print()
+
+print("Why shape and dtypes matter:")
+print("-" * 80)
+print("  * shape tells you how much data you have and sets expectations for loops/aggregations")
+print("  * dtypes determine which operations are allowed (math on numbers, string methods on text)")
+print("  * mismatched types (e.g., numbers stored as 'object') can lead to subtle bugs")
+print("  * missing values can affect inferred dtypes (e.g., ints become floats if NaNs are present)")
+print()
+
+# =============================================================================
 # SECTION 1: Inspecting Data with head()
 # =============================================================================
 print("=" * 80)
