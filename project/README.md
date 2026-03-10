@@ -392,3 +392,240 @@ For your video submission, demonstrate:
 - Showing and explaining common mistakes and errors
 
 ---
+
+## Milestone: Identifying and Removing Duplicate Records
+
+This milestone focuses on identifying and removing duplicate records in Pandas DataFrames. Duplicate data is a common data quality issue that can skew analysis, inflate counts, and lead to incorrect conclusions if not handled properly.
+
+Learning how to detect and remove duplicates ensures your dataset represents unique, reliable observations.
+
+### Learning Objectives
+By completing this milestone, you will be able to:
+- ✅ Identify duplicate rows in a dataset
+- ✅ Understand why duplicates occur
+- ✅ Remove duplicates using appropriate methods
+- ✅ Preserve important data while deduplicating
+- ✅ Improve overall data quality
+
+### Why This Matters
+Common beginner issues include:
+- Counting duplicate records as unique observations
+- Inflated metrics and misleading summaries
+- Removing duplicates without understanding their impact
+- Losing important information during cleanup
+
+Duplicate data silently corrupts analysis results.
+
+This milestone ensures that:
+- Each row represents a unique observation
+- Aggregations and statistics are accurate
+- Data integrity is preserved
+- Downstream analysis is trustworthy
+
+Think of deduplication as removing noise from your data.
+
+### What You Are Expected to Do
+This is a data cleaning milestone, not an analysis task.
+
+You are expected to:
+- Load a DataFrame that may contain duplicates
+- Detect duplicate records
+- Remove duplicates intentionally
+- Inspect the results after removal
+
+No modeling or visualization is required.
+
+### Key Topics Covered
+
+#### 1. Understanding Duplicate Records
+Learn what duplicates look like.
+- Understand row-level duplication
+- Recognize exact vs partial duplicates
+- Understand why duplicates occur
+- Avoid assumptions about uniqueness
+
+#### 2. Detecting Duplicate Rows
+Identify repeated records.
+- Detect duplicate rows in a DataFrame
+- Identify how many duplicates exist
+- Inspect duplicate entries
+- Understand boolean duplicate indicators
+
+#### 3. Removing Duplicate Records
+Clean the dataset.
+- Remove duplicate rows safely
+- Choose which duplicates to keep
+- Apply deduplication to selected columns if needed
+- Understand the effect on dataset size
+
+#### 4. Verifying Deduplication Results
+Confirm data quality.
+- Compare dataset shape before and after
+- Recheck for remaining duplicates
+- Ensure important records are retained
+- Document what changed
+
+### Demo Scripts
+
+See the following resources for complete demonstrations:
+
+**Python Script:**
+```bash
+python scripts/duplicate_records_milestone.py
+```
+
+**Interactive Notebook:**
+```bash
+jupyter notebook notebooks/duplicate_records_milestone.ipynb
+```
+
+### Key Methods Demonstrated
+- `duplicated()` - Detect duplicate rows (returns boolean Series)
+- `duplicated(subset=[...])` - Detect duplicates in specific columns
+- `duplicated(keep='first')` - Mark all except first occurrence
+- `duplicated(keep='last')` - Mark all except last occurrence
+- `duplicated(keep=False)` - Mark all duplicate occurrences
+- `drop_duplicates()` - Remove duplicate rows
+- `drop_duplicates(subset=[...])` - Remove based on specific columns
+- `drop_duplicates(keep='first')` - Keep first occurrence
+- `drop_duplicates(keep='last')` - Keep last occurrence
+- `drop_duplicates(keep=False)` - Remove all duplicate occurrences
+
+### Video Walkthrough Checklist
+For your video submission, demonstrate:
+- Detecting duplicate rows using `duplicated()`
+- Viewing duplicate records
+- Removing duplicates with `drop_duplicates()`
+- Verifying results after deduplication
+- Explaining when to keep first vs last occurrence
+
+---
+
+## Milestone: Standardizing Column Names and Data Formats
+
+This milestone focuses on standardizing column names and data formats in Pandas DataFrames. Inconsistent naming and formatting make datasets harder to understand, combine, and analyze—especially when working with real-world data from multiple sources.
+
+Standardization is a critical step in preparing clean, reliable, and analysis-ready data.
+
+### Learning Objectives
+By completing this milestone, you will be able to:
+- ✅ Convert column names to a consistent format
+- ✅ Remove spaces and special characters from column names
+- ✅ Apply predictable naming conventions
+- ✅ Standardize simple data formats (text, dates, numbers)
+- ✅ Improve dataset usability and readability
+
+### Why This Matters
+Common beginner issues include:
+- Column names with spaces or mixed casing
+- Inconsistent naming across datasets
+- Difficulty referencing columns in code
+- Errors when merging or transforming data
+
+Messy column names lead to messy code.
+
+This milestone ensures that:
+- Column access is simple and predictable
+- Code is cleaner and less error-prone
+- Datasets are easier to merge and reuse
+- Analysis workflows scale better
+
+Think of standardization as setting rules for your data to follow.
+
+### What You Are Expected to Do
+This is a data cleaning and formatting milestone, not an analysis task.
+
+You are expected to:
+- Load a DataFrame
+- Standardize column names
+- Apply consistent formatting to selected data
+- Inspect results after standardization
+
+No modeling or visualization is required.
+
+### Key Topics Covered
+
+#### 1. Standardizing Column Names
+Clean and normalize column headers.
+- Convert column names to lowercase
+- Replace spaces with underscores
+- Remove or handle special characters
+- Apply a consistent naming style
+
+#### 2. Choosing Naming Conventions
+Be consistent and intentional.
+- Use snake_case for column names
+- Avoid abbreviations that reduce clarity
+- Keep names descriptive but concise
+- Apply the same rules across all columns
+
+#### 3. Standardizing Text Data
+Normalize string values.
+- Convert text to lowercase or uppercase
+- Strip extra whitespace
+- Ensure consistent category values
+- Avoid mixed formats in the same column
+
+#### 4. Standardizing Numeric and Date Formats
+Ensure uniform data representation.
+- Ensure numeric columns are truly numeric
+- Standardize simple date formats conceptually
+- Recognize formatting issues early
+- Prepare data for downstream processing
+
+### Demo Scripts
+
+See the following resources for complete demonstrations:
+
+**Python Script:**
+```bash
+python scripts/standardizing_data_milestone.py
+```
+
+**Interactive Notebook:**
+```bash
+jupyter notebook notebooks/standardizing_data_milestone.ipynb
+```
+
+### Key Methods Demonstrated
+
+**Column Name Standardization:**
+- `df.columns.str.lower()` - Convert to lowercase
+- `df.columns.str.replace(' ', '_')` - Replace spaces
+- `df.columns.str.replace('[^a-z0-9_]', '', regex=True)` - Remove special chars
+- `df.columns.str.strip('_')` - Remove leading/trailing underscores
+
+**Text Standardization:**
+- `df['col'].str.lower()` - Convert text to lowercase
+- `df['col'].str.upper()` - Convert text to uppercase
+- `df['col'].str.title()` - Convert text to title case
+- `df['col'].str.strip()` - Remove leading/trailing whitespace
+
+**Data Type Conversion:**
+- `pd.to_numeric(df['col'], errors='coerce')` - Convert to numeric
+- `pd.to_datetime(df['col'], errors='coerce')` - Convert to datetime
+
+### Reusable Function
+Create a standardization function for your projects:
+```python
+def standardize_column_names(df):
+    """Convert column names to snake_case format."""
+    df = df.copy()
+    df.columns = df.columns.str.lower()
+    df.columns = df.columns.str.strip()
+    df.columns = df.columns.str.replace(' ', '_')
+    df.columns = df.columns.str.replace('[^a-z0-9_]', '', regex=True)
+    df.columns = df.columns.str.replace('_+', '_', regex=True)
+    df.columns = df.columns.str.strip('_')
+    return df
+```
+
+### Video Walkthrough Checklist
+For your video submission, demonstrate:
+- Standardizing messy column names to snake_case
+- Converting text data to consistent case
+- Stripping whitespace from text columns
+- Converting string numbers to numeric type
+- Explaining the importance of naming conventions
+
+---
