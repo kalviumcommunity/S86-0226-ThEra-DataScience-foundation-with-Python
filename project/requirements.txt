@@ -1,0 +1,16 @@
+# Python Data Science Foundation - Required Packages
+# Install these packages using: pip install -r requirements.txt
+
+# Core data manipulation
+pandas>=1.5.0
+numpy>=1.23.0
+
+# Data visualization
+matplotlib>=3.6.0
+
+# Jupyter notebooks (optional, for interactive development)
+jupyter>=1.0.0
+notebook>=6.5.0
+
+# Note: These are the minimum versions tested with this course.
+# Later versions should work as well.
