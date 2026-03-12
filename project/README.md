@@ -629,3 +629,197 @@ For your video submission, demonstrate:
 - Explaining the importance of naming conventions
 
 ---
+
+## Milestone: Comparing Distributions Across Multiple Columns
+
+This milestone focuses on **comparing distributions across multiple columns** in a Pandas DataFrame. Comparing distributions helps you understand how different variables behave relative to each other and reveals patterns that single-column analysis cannot show.
+
+This is a key step in Exploratory Data Analysis (EDA) before drawing any insights or conclusions.
+
+### Learning Objectives
+By completing this milestone, you will be able to:
+- ✅ Compute summary statistics for multiple columns
+- ✅ Compare means, medians, and ranges across columns
+- ✅ Identify columns with higher or lower variability
+- ✅ Detect unusual distributions conceptually
+- ✅ Use comparisons to guide deeper analysis
+
+### Why This Matters
+Common beginner issues include:
+- Analyzing columns in isolation
+- Missing relationships between variables
+- Comparing raw values instead of distributions
+- Drawing conclusions without context
+
+**Most real insights come from comparison, not isolation.**
+
+This milestone ensures that:
+- You understand how variables differ from each other
+- Patterns across columns become visible
+- Analysis decisions are more informed
+- You avoid misleading conclusions
+
+Think of distribution comparison as putting columns side by side and asking, "How are these different?"
+
+### What You Are Expected to Do
+This is a data understanding milestone, not a modeling task.
+
+You are expected to:
+- Load a DataFrame with multiple numeric columns
+- Compute summary statistics for each column
+- Compare distributions using statistics
+- Interpret differences meaningfully
+
+No visualization or modeling is required.
+
+### Key Topics Covered
+
+#### 1. Understanding Distributions Across Columns
+Build a comparative mindset.
+- Understand what distribution means for a column
+- Recognize that each column has its own spread
+- Avoid comparing raw values directly
+- Focus on patterns, not single numbers
+
+Comparison adds context.
+
+#### 2. Comparing Central Tendency
+Look at averages across columns.
+- Compare means across multiple columns
+- Compare medians to detect skew
+- Understand why averages may differ
+- Avoid assuming "higher is better"
+
+Central tendency is only one part of the story.
+
+#### 3. Comparing Spread and Variability
+Understand how data is distributed.
+- Compare ranges across columns
+- Compare standard deviation conceptually
+- Identify columns with high variability
+- Recognize stability vs volatility in data
+
+Spread explains consistency.
+
+#### 4. Identifying Patterns and Anomalies
+Detect interesting behavior.
+- Identify columns that behave differently
+- Notice unusually wide or narrow distributions
+- Use statistics to raise questions
+- Avoid jumping to conclusions
+
+EDA is about asking better questions.
+
+### Demo Scripts
+
+See the following resources for complete demonstrations:
+
+**Python Script:**
+```bash
+python scripts/comparing_distributions_milestone.py
+```
+
+**Interactive Notebook:**
+```bash
+jupyter notebook notebooks/comparing_distributions_milestone.ipynb
+```
+
+**Complete Documentation:**
+See `notebooks/COMPARING_DISTRIBUTIONS_README.md` for comprehensive guide, teaching notes, and assessment ideas.
+
+### Key Methods and Concepts Demonstrated
+
+**Summary Statistics:**
+- `df.describe()` - Multi-column summary statistics
+- `df.mean()` - Compare average values across columns
+- `df.median()` - Compare middle values (robust to outliers)
+- `df.std()` - Compare variability/spread
+- `df.min()`, `df.max()` - Compare ranges
+
+**Comparison Techniques:**
+- Creating comparison tables with multiple metrics
+- Sorting columns by statistical measures
+- Detecting skewness (mean vs median)
+- Computing Coefficient of Variation (CV) for relative comparison
+- Building comprehensive comparison DataFrames
+
+**Pattern Detection:**
+- Identifying similar vs contrasting distributions
+- Detecting unusual variability
+- Recognizing scale differences
+- Spotting columns that warrant investigation
+
+### Sample Dataset
+The milestone uses a **student performance dataset** with intentionally different distributions:
+
+| Column | Mean | Std Dev | Characteristics |
+|--------|------|---------|-----------------|
+| `math_score` | ~75 | ~8 | High mean, low variability |
+| `science_score` | ~70 | ~10 | Moderate mean and variability |
+| `english_score` | ~65 | ~15 | Lower mean, high variability |
+| `attendance_pct` | ~92 | ~5 | Very high, very consistent |
+| `study_hours` | ~15 | ~5 | Different scale, moderate variability |
+| `assignment_completion` | ~85 | ~12 | Moderate mean and variability |
+
+This diversity enables meaningful comparison exercises and pattern recognition.
+
+### Key Formulas
+
+**Coefficient of Variation (CV):**
+```
+CV = (Standard Deviation / Mean) × 100
+```
+Use CV to compare variability across different scales.
+
+**Range:**
+```
+Range = Maximum - Minimum
+```
+Shows the full span of values.
+
+**Detecting Skewness:**
+```
+If mean ≈ median: Symmetric distribution
+If mean > median: Right-skewed (positive skew)
+If mean < median: Left-skewed (negative skew)
+```
+
+### Practice Exercise
+The milestone includes a practice exercise with a **product sales dataset** featuring:
+- Price and cost data
+- Units sold
+- Customer ratings
+- Discount percentages
+
+You'll perform a complete distribution comparison analysis and suggest next analytical steps based on your findings.
+
+### Key Takeaways
+
+**Distributional comparison is essential for:**
+- Understanding how variables differ from each other
+- Identifying patterns and anomalies across columns
+- Making informed analysis decisions
+- Adding context to single-column statistics
+
+**Remember:**
+- Compare central tendency (mean, median) to understand typical values
+- Compare spread (std, range) to understand variability
+- Use relative measures (CV) when scales differ
+- Look for patterns, not just individual numbers
+- Let comparisons guide your next analytical steps
+
+**Most importantly:**
+- Always compare distributions before drawing conclusions
+- Context from comparison prevents misleading insights
+- Multi-column thinking reveals relationships
+- Distribution analysis is the foundation of good EDA
+
+### Video Walkthrough Checklist
+For your video submission, demonstrate:
+- Using `describe()` to compare multiple columns at once
+- Comparing means and medians across columns
+- Identifying which column has highest/lowest variability
+- Computing and interpreting Coefficient of Variation
+- Explaining when distributions suggest further investigation
+
+---
