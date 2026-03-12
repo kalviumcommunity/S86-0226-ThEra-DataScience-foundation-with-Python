@@ -17,6 +17,41 @@ This project follows a standard, professional folder structure to ensure clarity
 
 This structure helps your project scale, remain organized, and be easy for others to understand and review.
 
+## Requirements & Setup
+
+This project requires Python 3.8+ and several data science packages.
+
+### Installing Required Packages
+
+Install all required packages using:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Required Packages:
+- **pandas** (≥1.5.0) - Data manipulation and analysis
+- **numpy** (≥1.23.0) - Numerical computing
+- **matplotlib** (≥3.6.0) - Data visualization
+- **jupyter** (≥1.0.0) - Interactive notebooks (optional)
+
+If you prefer to install packages individually:
+
+```bash
+pip install pandas numpy matplotlib jupyter
+```
+
+### Verifying Installation
+
+Test your setup by running:
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+print("All packages installed successfully!")
+```
+
 ---
 
 
@@ -821,5 +856,250 @@ For your video submission, demonstrate:
 - Identifying which column has highest/lowest variability
 - Computing and interpreting Coefficient of Variation
 - Explaining when distributions suggest further investigation
+
+---
+
+## Milestone: Visualizing Data Distributions Using Histograms
+
+This milestone focuses on **visualizing data distributions using histograms**. Histograms are one of the most effective ways to understand how values are distributed across a numeric column, revealing patterns that summary statistics alone may hide.
+
+Visualization helps you see the data, not just describe it numerically.
+
+### Learning Objectives
+By completing this milestone, you will be able to:
+- ✅ Create histograms for single and multiple columns
+- ✅ Interpret distribution shape and spread
+- ✅ Identify skewed or uneven distributions
+- ✅ Detect potential outliers visually
+- ✅ Use histograms to guide further analysis
+
+### Why This Matters
+Common beginner issues include:
+- Relying only on averages without seeing the data
+- Missing skewed or multi-modal distributions
+- Overlooking outliers that affect analysis
+- Misinterpreting summary statistics
+
+**Histograms reveal patterns that numbers alone cannot.**
+
+This milestone ensures that:
+- You understand how data is distributed
+- Patterns and anomalies become visible
+- Statistical results are interpreted in context
+- EDA decisions are better informed
+
+Think of histograms as a visual summary of your data's behavior.
+
+### What You Are Expected to Do
+This is a data visualization milestone, not a modeling task.
+
+You are expected to:
+- Load a dataset into a DataFrame
+- Select one or more numeric columns
+- Create histograms for those columns
+- Interpret what the histograms show
+
+No modeling or advanced visualization is required.
+
+### Key Topics Covered
+
+#### 1. Understanding Histograms
+Learn what histograms show.
+- Understand bins and frequencies
+- Recognize how values are grouped
+- Understand range and distribution shape
+- Avoid confusing histograms with bar charts
+
+Histograms are for continuous numeric data.
+
+#### 2. Creating a Histogram for a Single Column
+Visualize one distribution.
+- Select a numeric column
+- Create a histogram
+- Observe how values are distributed
+- Adjust bins conceptually if needed
+
+Single-column histograms build intuition.
+
+#### 3. Interpreting Distribution Shape
+Learn to read patterns.
+- Identify skewed distributions (right, left)
+- Recognize roughly normal distributions
+- Notice gaps or clusters
+- Understand what shape suggests about the data
+
+Shape tells a story.
+
+#### 4. Comparing Histograms Across Columns
+Extend visual comparison.
+- Create histograms for multiple columns
+- Compare spread and skew visually
+- Identify columns with different behavior
+- Use visuals to support statistical comparisons
+
+Visual comparison complements statistics.
+
+### Demo Scripts
+
+See the following resources for complete demonstrations:
+
+**Python Script:**
+```bash
+python scripts/visualizing_histograms_milestone.py
+```
+
+**Interactive Notebook:**
+```bash
+jupyter notebook notebooks/visualizing_histograms_milestone.ipynb
+```
+
+### Key Concepts Demonstrated
+
+**Distribution Shapes:**
+- **Normal (Bell-Shaped)**: Symmetric around mean, Mean ≈ Median
+- **Right-Skewed**: Tail extends right, Mean > Median
+- **Left-Skewed**: Tail extends left, Mean < Median
+- **Bimodal**: Two distinct peaks, suggests two groups
+- **Uniform**: Roughly flat, all values equally likely
+
+**Histogram Components:**
+- **Bins**: Intervals dividing the range of values
+- **Frequency**: Count of values in each bin
+- **Shape**: Overall pattern of the distribution
+- **Outliers**: Isolated bars far from main distribution
+
+**Plotting Methods:**
+- `df['column'].hist()` - Single column histogram
+- `df.hist()` - All numeric columns at once
+- Adjusting bins: `hist(bins=20)`
+- Adding mean/median lines with `axvline()`
+
+### Sample Dataset
+The milestone uses a **student performance dataset** with diverse distribution shapes:
+
+| Column | Distribution Shape | Characteristics |
+|--------|-------------------|-----------------|
+| `math_score` | Normal (Bell-shaped) | Symmetric, mean ≈ median |
+| `study_hours` | Right-skewed | Most values low, few high values |
+| `attendance_pct` | Left-skewed | Most values high, few low values |
+| `assignment_score` | Bimodal | Two distinct peaks (two groups) |
+| `random_metric` | Uniform | Roughly flat distribution |
+| `quiz_score` | With outliers | Main cluster with isolated low values |
+
+This diversity helps you practice recognizing different distribution patterns.
+
+### Key Visualizations Created
+
+The milestone generates 7 plots demonstrating:
+
+1. **Single column histogram** - Basic histogram for math scores
+2. **Bin comparison** - Same data with 5, 15, and 40 bins
+3. **Distribution shapes** - All 6 different distribution types
+4. **Outlier detection** - Quiz scores with/without outliers
+5. **Score comparison** - Side-by-side test score histograms
+6. **All columns grid** - Overview of all distributions
+7. **Practice exercise** - Product sales data analysis
+
+### Using Histograms to Guide Analysis
+
+**If distribution is NORMAL (symmetric):**
+- → Use mean as summary statistic
+- → Can use parametric statistical tests
+- → Standard deviation is meaningful
+- → Proceed with standard methods
+
+**If distribution is SKEWED:**
+- → Use median instead of mean
+- → Consider transformation (log, sqrt)
+- → Be cautious with parametric tests
+- → Report skewness explicitly
+
+**If distribution has OUTLIERS:**
+- → Investigate outliers individually
+- → Decide: Remove, keep, or analyze separately
+- → Use robust statistics (median, IQR)
+- → Consider outlier impact on models
+
+**If distribution is BIMODAL:**
+- → You may have TWO distinct groups
+- → Consider segmentation or clustering
+- → Analyze groups separately
+- → Investigate what causes the split
+
+**If distribution is UNIFORM:**
+- → No clear central tendency
+- → All values equally common
+- → May indicate data quality issue or special case
+
+### Practice Exercise
+The milestone includes a practice exercise with **product sales data** featuring:
+- Price (bimodal distribution - two product tiers)
+- Units sold (right-skewed - most products sell moderately)
+- Customer rating (left-skewed - most ratings high)
+- Discount percentage (uniform - no clear pattern)
+
+You'll create histograms, identify shapes, and recommend analysis strategies.
+
+### Best Practices
+
+**Do's ✓**
+- Always create histograms BEFORE relying on summary statistics
+- Adjust bin count if default doesn't reveal patterns
+- Add mean/median lines to show central tendency
+- Compare distributions side-by-side
+- Look for shape, spread, outliers, and gaps
+- Use histograms to decide between mean vs median
+- Let visual patterns guide next analytical steps
+
+**Don'ts ✗**
+- Don't rely only on mean/std without visualizing
+- Don't use too few or too many bins
+- Don't confuse histograms with bar charts
+- Don't ignore skewness and outliers
+- Don't assume all numeric data is normally distributed
+
+### Key Takeaways
+
+**Histograms are essential for:**
+- Visualizing how data is distributed
+- Identifying shape, skewness, and outliers
+- Deciding between mean vs median
+- Detecting bimodal or multi-modal patterns
+- Guiding statistical analysis decisions
+
+**Remember:**
+- Histograms reveal patterns that numbers alone cannot
+- Shape determines which statistics and methods to use
+- Visual comparison complements statistical comparison  
+- Outliers and skewness are visible immediately
+- Always visualize before assuming normality
+
+**Most importantly:**
+- Never rely on summary statistics alone
+- Visualize first, then analyze
+- Let distribution shape guide your methods
+- Histograms are the foundation of good EDA
+
+### Integration with Other Milestones
+
+This milestone builds on:
+- **Comparing Distributions Milestone**: Adds visual analysis to statistical comparison
+- **DataFrame Inspection**: Using `describe()` with visual context
+- **Missing Values Detection**: Understanding data completeness before plotting
+
+This milestone prepares you for:
+- **Box plots**: Additional outlier visualization
+- **Scatter plots**: Bivariate relationship visualization
+- **Correlation analysis**: Understanding relationships between variables
+- **Statistical modeling**: Choosing appropriate models based on distribution
+
+### Video Walkthrough Checklist
+For your video submission, demonstrate:
+- Creating a basic histogram for a single column
+- Comparing different bin sizes (5, 15, 40 bins)
+- Identifying distribution shapes (normal, skewed, bimodal)
+- Detecting outliers visually in a histogram
+- Comparing multiple distributions side-by-side
+- Explaining what the histogram shape tells you about using mean vs median
 
 ---
