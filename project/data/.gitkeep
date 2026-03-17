@@ -1,6 +1,0 @@
-# Top-level data directory. Subfolders separate stages.
-# Use `raw/` for original, unmodified inputs and
-# `processed/` for cleaned or transformed datasets.
-# Do NOT put actual files here; keep it empty except for
-# these placeholder files so Git tracks the directories.
-# Raw data must be treated as read-only evidence.

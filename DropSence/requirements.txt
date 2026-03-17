@@ -1,0 +1,20 @@
+# ============================================
+# Education Dropout Analysis Dashboard
+# Python Dependencies
+# ============================================
+
+# Web Framework
+Flask==3.0.0
+Werkzeug==3.0.1
+
+# Data Analysis
+pandas==2.1.4
+numpy==1.26.2
+
+# Data Visualization
+matplotlib==3.8.2
+seaborn==0.13.0
+
+# Additional utilities
+Jinja2==3.1.2
+MarkupSafe==2.1.3

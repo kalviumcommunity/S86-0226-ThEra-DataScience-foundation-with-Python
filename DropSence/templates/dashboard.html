@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drop Sence - Dashboard</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff7300' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><line x1='6' y1='20' x2='6' y2='15'/><line x1='12' y1='20' x2='12' y2='4'/><line x1='18' y1='20' x2='18' y2='10'/></svg>">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="nav-brand">
+                <i data-lucide="bar-chart-2"></i> DropSence
+            </a>
+            <ul class="nav-links">
+                <li><a href="/dashboard" class="nav-link active">Dashboard</a></li>
+                <li><a href="/visual-analytics" class="nav-link">Visual Analytics</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
+                <li><a href="/documentation" class="nav-link">Documentation</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+                        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1 class="header-title"><i data-lucide="bar-chart-3" style="display:inline;vertical-align:middle;width:32px;height:32px;"></i> Education Dropout Analytics Dashboard</h1>
+            <p class="header-subtitle">Data-Driven Insights for NGO Education Programs</p>
+        </div>
+    </header>
+
+    <!-- Main Dashboard Container -->
+    <div class="container">
+
+
+        <!-- Key Statistics Cards Section -->
+        <section class="stats-section">
+            <h2 class="section-title"><i data-lucide="bar-chart-3"></i> Executive Summary</h2>
+            <div class="stats-grid">
+                <!-- Total Students -->
+                <div class="stat-card stat-card-primary">
+                    <div class="stat-icon"><i data-lucide="users" style="color: #6366f1;"></i></div>
+                    <div class="stat-content">
+                        <h3 class="stat-label">Total Students</h3>
+                        <p class="stat-value">{{ "{:,}".format(stats.total_students) }}</p>
+                    </div>
+                </div>
+                <!-- Total Dropouts -->
+                <div class="stat-card stat-card-danger">
+                    <div class="stat-icon"><i data-lucide="user-x" style="color: #ef4444;"></i></div>
+                    <div class="stat-content">
+                        <h3 class="stat-label">Total Dropouts</h3>
+                        <p class="stat-value">{{ "{:,}".format(stats.total_dropouts) }}</p>
+                    </div>
+                </div>
+                <!-- Dropout Rate -->
+                <div class="stat-card stat-card-warning">
+                    <div class="stat-icon"><i data-lucide="trending-down" style="color: #f59e0b;"></i></div>
+                    <div class="stat-content">
+                        <h3 class="stat-label">Dropout Rate</h3>
+                        <p class="stat-value">{{ stats.dropout_rate }}%</p>
+                    </div>
+                </div>
+                <!-- At-Risk Students -->
+                <div class="stat-card stat-card-danger">
+                    <div class="stat-icon"><i data-lucide="alert-triangle" style="color: #f43f5e;"></i></div>
+                    <div class="stat-content">
+                        <h3 class="stat-label">At-Risk</h3>
+                        <p class="stat-value">{{ stats.at_risk }}</p>
+                    </div>
+                </div>
+                <!-- Re-Enrolled -->
+                <div class="stat-card stat-card-info">
+                    <div class="stat-icon"><i data-lucide="rotate-ccw" style="color: #0ea5e9;"></i></div>
+                    <div class="stat-content">
+                        <h3 class="stat-label">Re-Enrolled</h3>
+                        <p class="stat-value">{{ stats.re_enrolled }}</p>
+                    </div>
+                </div>
+                <!-- Avg Attendance -->
+                <div class="stat-card stat-card-success">
+                    <div class="stat-icon"><i data-lucide="calendar-check" style="color: #10b981;"></i></div>
+                    <div class="stat-content">
+                        <h3 class="stat-label">Avg Attendance</h3>
+                        <p class="stat-value">{{ stats.avg_attendance }}%</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- At-Risk Students Table -->
+        <section class="table-section" style="margin-bottom: var(--spacing-xl);">
+            <h2 class="section-title"><i data-lucide="list"></i> Students at High Risk</h2>
+            <div class="table-container" style="border-radius: 12px; overflow: hidden;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 1rem;">Student ID</th>
+                            <th style="padding: 1rem;">Region</th>
+                            <th style="padding: 1rem;">Attendance</th>
+                            <th style="padding: 1rem;">Score</th>
+                            <th style="padding: 1rem;">Risk Level</th>
+                            <th style="padding: 1rem;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in at_risk_list %}
+                        <tr>
+                            <td style="padding: 1rem; font-weight: 600;">#{{ student.StudentID }}</td>
+                            <td style="padding: 1rem;">{{ student.Region }}</td>
+                            <td style="padding: 1rem;">{{ student.Attendance }}%</td>
+                            <td style="padding: 1rem;">{{ student.Score }}</td>
+                            <td style="padding: 1rem;">
+                                <span style="background: #fee2e2; color: #ef4444; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600;">
+                                    {{ student.Risk_Level }}
+                                </span>
+                            </td>
+                            <td style="padding: 1rem; color: var(--primary-orange); font-weight: 600;">{{ student.Suggested_Action }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+
+        <!-- Recommendations Section -->
+        <section class="recommendations-section">
+            <h2 class="section-title"><i data-lucide="lightbulb"></i> Recommended Actions</h2>
+            <div class="recommendations-grid">
+
+                <div class="recommendation-card">
+                    <div class="recommendation-icon"><i data-lucide="target" style="width:28px;height:28px;color:#ef4444;"></i></div>
+                    <h3 class="recommendation-title">Target High-Risk Regions</h3>
+                    <p class="recommendation-text">Focus intervention programs on regions with dropout rates above the
+                        national average.</p>
+                </div>
+
+                <div class="recommendation-card">
+                    <div class="recommendation-icon"><i data-lucide="book-open" style="width:28px;height:28px;color:#3b82f6;"></i></div>
+                    <h3 class="recommendation-title">Attendance Monitoring</h3>
+                    <p class="recommendation-text">Implement early warning systems for students with attendance below
+                        75%.</p>
+                </div>
+
+                <div class="recommendation-card">
+                    <div class="recommendation-icon"><i data-lucide="users" style="width:28px;height:28px;color:#8b5cf6;"></i></div>
+                    <h3 class="recommendation-title">Age-Specific Support</h3>
+                    <p class="recommendation-text">Design targeted support programs for vulnerable age groups identified
+                        in the data.</p>
+                </div>
+
+                <div class="recommendation-card">
+                    <div class="recommendation-icon"><i data-lucide="scale" style="width:28px;height:28px;color:#f59e0b;"></i></div>
+                    <h3 class="recommendation-title">Gender Equity Programs</h3>
+                    <p class="recommendation-text">Address gender disparities through tailored mentorship and support
+                        initiatives.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                © 2026 DropSence Analytics Dashboard |
+                Powered by Python Flask & Data Science |
+                Built for NGO Education Programs
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        (function() {
+            const savedTheme = localStorage.getItem('dropsence-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('dropsence-theme', next);
+        });
+
+        // Initialize Lucide Icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
