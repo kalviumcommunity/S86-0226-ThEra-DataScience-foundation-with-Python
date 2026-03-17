@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drop Sence - Documentation</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff7300' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><line x1='6' y1='20' x2='6' y2='15'/><line x1='12' y1='20' x2='12' y2='4'/><line x1='18' y1='20' x2='18' y2='10'/></svg>">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Documentation-specific styles */
+        .doc-container {
+            max-width: 960px;
+            padding: 2.5rem 1rem 4rem;
+            margin: 0 auto;
+        }
+
+        .doc-section {
+            margin-bottom: 3rem;
+            background: #fff;
+            border-radius: 16px;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid #f0f0f0;
+            transition: box-shadow 0.3s ease;
+        }
+        .doc-section:hover {
+            box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+        }
+
+        .doc-section h2 {
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.35rem;
+            color: #1e293b;
+        }
+
+        .doc-section p, .doc-section li {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: #475569;
+        }
+
+        .doc-section ul {
+            margin-left: 1.5rem;
+            margin-top: 0.75rem;
+        }
+
+        /* API Endpoint Cards */
+        .api-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.3s ease, transform 0.2s ease;
+        }
+        .api-card:hover {
+            border-color: #6366f1;
+            transform: translateY(-2px);
+        }
+        .api-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .api-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .method-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+        .method-get {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+        .method-post {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .api-endpoint {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #1e293b;
+            background: #e2e8f0;
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+        }
+
+        .api-card-desc {
+            font-size: 0.98rem;
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .api-card-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #334155;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        /* Code blocks */
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.25rem 1.5rem;
+            border-radius: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            overflow-x: auto;
+            position: relative;
+            margin-top: 0.5rem;
+        }
+
+        .code-block .comment {
+            color: #94a3b8;
+        }
+        .code-block .key {
+            color: #7dd3fc;
+        }
+        .code-block .string {
+            color: #86efac;
+        }
+        .code-block .number {
+            color: #fbbf24;
+        }
+        .code-block .url {
+            color: #c4b5fd;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #e2e8f0;
+            padding: 0.35rem 0.7rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .copy-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Response fields table */
+        .fields-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 0.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+        .fields-table th {
+            background: #f1f5f9;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .fields-table td {
+            padding: 0.7rem 1rem;
+            font-size: 0.95rem;
+            color: #475569;
+            border-top: 1px solid #f1f5f9;
+        }
+        .fields-table tr:hover td {
+            background: #fefce8;
+        }
+        .fields-table code {
+            background: #e2e8f0;
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #6366f1;
+        }
+        .type-tag {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+        .type-int    { background: #fef3c7; color: #b45309; }
+        .type-float  { background: #fce7f3; color: #be185d; }
+        .type-string { background: #dbeafe; color: #1d4ed8; }
+        .type-list   { background: #dcfce7; color: #16a34a; }
+        .type-object { background: #ede9fe; color: #7c3aed; }
+
+        /* Status codes */
+        .status-codes {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+        .status-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .status-200 { background: #dcfce7; color: #16a34a; }
+        .status-404 { background: #fef3c7; color: #b45309; }
+        .status-500 { background: #fee2e2; color: #dc2626; }
+
+        /* Page navigation tabs */
+        .doc-nav {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2.5rem;
+            padding: 0.4rem;
+            background: #f1f5f9;
+            border-radius: 12px;
+            flex-wrap: wrap;
+        }
+        .doc-nav-link {
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: #64748b;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .doc-nav-link:hover {
+            background: #e2e8f0;
+            color: #1e293b;
+        }
+        .doc-nav-link.active-tab {
+            background: #6366f1;
+            color: #fff;
+        }
+
+        /* Try it live button */
+        .try-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 1rem;
+            padding: 0.5rem 1.1rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #fff;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .try-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+        }
+
+        /* Divider */
+        .doc-divider {
+            border: none;
+            border-top: 1px solid #e2e8f0;
+            margin: 2.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="nav-brand">
+                <i data-lucide="bar-chart-2"></i> DropSence
+            </a>
+            <ul class="nav-links">
+                <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="/visual-analytics" class="nav-link">Visual Analytics</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
+                <li><a href="/documentation" class="nav-link active">Documentation</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+                        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="header">
+        <div class="container">
+            <h1 class="header-title"><i data-lucide="book-open" style="display:inline;vertical-align:middle;width:32px;height:32px;"></i> Developer & User Documentation</h1>
+            <p class="header-subtitle">Complete Guide to Operating, Integrating, and Extending the DropSence Platform</p>
+        </div>
+    </header>
+
+    <div class="doc-container">
+
+        <!-- In-page Navigation -->
+        <nav class="doc-nav" id="docNav">
+            <a class="doc-nav-link active-tab" onclick="scrollToSection('getting-started')">Getting Started</a>
+            <a class="doc-nav-link" onclick="scrollToSection('data-upload')">Data Upload</a>
+            <a class="doc-nav-link" onclick="scrollToSection('risk-logic')">Risk Logic</a>
+            <a class="doc-nav-link" onclick="scrollToSection('api-reference')">API Reference</a>
+            <a class="doc-nav-link" onclick="scrollToSection('architecture')">Architecture</a>
+        </nav>
+
+        <!-- ========== GETTING STARTED ========== -->
+        <section class="doc-section" id="getting-started">
+            <h2><i data-lucide="rocket"></i> Getting Started</h2>
+            <p>DropSence is a Flask-based analytics platform that helps NGOs understand and combat student dropout patterns. Follow these steps to get up and running:</p>
+            <ul>
+                <li><strong>Install dependencies:</strong> <code>pip install -r requirements.txt</code></li>
+                <li><strong>Run the server:</strong> <code>python app.py</code></li>
+                <li><strong>Open in browser:</strong> Navigate to <code>http://127.0.0.1:5000</code></li>
+                <li><strong>Upload data or use the default system dataset</strong> to begin analysis.</li>
+            </ul>
+        </section>
+
+        <!-- ========== DATA UPLOAD ========== -->
+        <section class="doc-section" id="data-upload">
+            <h2><i data-lucide="upload-cloud"></i> Uploading Data</h2>
+            <p>
+                The platform accepts <strong>CSV files</strong> containing student demographic and academic records. Our intelligent column mapper auto-detects your headers — you don't need exact matches.
+            </p>
+            <p class="api-card-label">Recognized Column Variations</p>
+            <table class="fields-table">
+                <thead>
+                    <tr>
+                        <th>Required Field</th>
+                        <th>Also Recognized As</th>
+                        <th>Auto-Generated?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>Dropout</code></td>
+                        <td>Status, Left, Discontinued, Target, Outcome</td>
+                        <td><i data-lucide="x-circle" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#ef4444;"></i> <strong>Must provide</strong></td>
+                    </tr>
+                    <tr>
+                        <td><code>Age</code></td>
+                        <td>StudentAge, Years, EnrollmentAge</td>
+                        <td><i data-lucide="check-circle" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#10b981;"></i> Random 15–20</td>
+                    </tr>
+                    <tr>
+                        <td><code>Gender</code></td>
+                        <td>Sex, M/F, GenderIdentity</td>
+                        <td><i data-lucide="check-circle" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#10b981;"></i> Random M/F</td>
+                    </tr>
+                    <tr>
+                        <td><code>Attendance</code></td>
+                        <td>AttendanceRate, Present, Regularity</td>
+                        <td><i data-lucide="check-circle" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#10b981;"></i> Normal ~82%</td>
+                    </tr>
+                    <tr>
+                        <td><code>Score</code></td>
+                        <td>Marks, Grade, TestScore, GPA, Points</td>
+                        <td><i data-lucide="check-circle" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#10b981;"></i> Normal ~70</td>
+                    </tr>
+                    <tr>
+                        <td><code>StudentID</code></td>
+                        <td>SID, ID, RollNumber, UniqueID</td>
+                        <td><i data-lucide="check-circle" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#10b981;"></i> Sequential</td>
+                    </tr>
+                    <tr>
+                        <td><code>Region</code></td>
+                        <td>Area, Location, Zone, District, City</td>
+                        <td><i data-lucide="check-circle" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#10b981;"></i> &quot;General&quot;</td>
+                    </tr>
+                    <tr>
+                        <td><code>School</code></td>
+                        <td>Institution, College, Course, Department</td>
+                        <td><i data-lucide="check-circle" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#10b981;"></i> &quot;Unknown School&quot;</td>
+                    </tr>
+                    <tr>
+                        <td><code>Year</code></td>
+                        <td>AcademicYear, Grade, Session</td>
+                        <td><i data-lucide="check-circle" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#10b981;"></i> Current year</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 1rem; font-size: 0.95rem; color: #64748b;">
+                <i data-lucide="lightbulb" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#f59e0b;"></i> <strong>Only the Dropout column is strictly required.</strong> All other columns will be auto-generated with realistic distributions if missing.
+            </p>
+        </section>
+
+        <!-- ========== RISK CLASSIFICATION ========== -->
+        <section class="doc-section" id="risk-logic">
+            <h2><i data-lucide="shield-alert"></i> Risk Classification Logic</h2>
+            <p>Students are dynamically classified based on attendance and academic performance thresholds:</p>
+            <table class="fields-table">
+                <thead>
+                    <tr>
+                        <th>Risk Level</th>
+                        <th>Criteria</th>
+                        <th>Recommended Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span style="background:#fee2e2;color:#ef4444;padding:0.2rem 0.6rem;border-radius:20px;font-weight:700;font-size:0.85rem;">High</span></td>
+                        <td>Attendance &lt; 60% <strong>OR</strong> Score &lt; 40</td>
+                        <td><i data-lucide="siren" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#ef4444;"></i> Urgent Counseling</td>
+                    </tr>
+                    <tr>
+                        <td><span style="background:#fef3c7;color:#f59e0b;padding:0.2rem 0.6rem;border-radius:20px;font-weight:700;font-size:0.85rem;">Medium</span></td>
+                        <td>Attendance &lt; 75% <strong>OR</strong> Score &lt; 60</td>
+                        <td><i data-lucide="users" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#f59e0b;"></i> Parent Engagement</td>
+                    </tr>
+                    <tr>
+                        <td><span style="background:#dcfce7;color:#16a34a;padding:0.2rem 0.6rem;border-radius:20px;font-weight:700;font-size:0.85rem;">Low</span></td>
+                        <td>Normal parameters</td>
+                        <td><i data-lucide="clipboard-check" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#10b981;"></i> Regular Monitoring</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <hr class="doc-divider">
+
+        <!-- ========== API REFERENCE ========== -->
+        <section class="doc-section" id="api-reference">
+            <h2><i data-lucide="code-2"></i> API Reference</h2>
+            <p>DropSence exposes a RESTful JSON API that allows external applications and scripts to consume dropout analytics data programmatically.</p>
+
+            <p style="margin-top:0.75rem; font-size: 0.95rem; color: #64748b;">
+                <strong>Base URL:</strong> <code>http://127.0.0.1:5000</code>
+            </p>
+
+            <!-- API Endpoint 1: GET /api/stats -->
+            <div class="api-card" style="margin-top: 1.5rem;">
+                <div class="api-card-header">
+                    <span class="method-badge method-get">GET</span>
+                    <span class="api-endpoint">/api/stats</span>
+                </div>
+                <p class="api-card-desc">
+                    Returns key dropout statistics and auto-generated insights for the currently active dataset (uploaded or default).
+                </p>
+
+                <p class="api-card-label">Example Request</p>
+                <div class="code-block" id="codeBlock1">
+                    <button class="copy-btn" onclick="copyCode('codeBlock1')">Copy</button>
+<span class="comment"># Using cURL</span>
+<span class="url">curl</span> http://127.0.0.1:5000/api/stats
+
+<span class="comment"># Using Python requests</span>
+<span class="key">import</span> requests
+response = requests.<span class="key">get</span>(<span class="string">"http://127.0.0.1:5000/api/stats"</span>)
+data = response.<span class="key">json</span>()
+<span class="key">print</span>(data)
+                </div>
+
+                <p class="api-card-label">Success Response <span class="status-chip status-200">200 OK</span></p>
+                <div class="code-block" id="codeBlock2">
+                    <button class="copy-btn" onclick="copyCode('codeBlock2')">Copy</button>
+{
+  <span class="key">"status"</span>: <span class="string">"success"</span>,
+  <span class="key">"statistics"</span>: {
+    <span class="key">"total_students"</span>:   <span class="number">200</span>,
+    <span class="key">"total_dropouts"</span>:   <span class="number">68</span>,
+    <span class="key">"dropout_rate"</span>:     <span class="number">34.0</span>,
+    <span class="key">"at_risk"</span>:          <span class="number">45</span>,
+    <span class="key">"re_enrolled"</span>:      <span class="number">10</span>,
+    <span class="key">"avg_attendance"</span>:   <span class="number">70.25</span>,
+    <span class="key">"avg_score"</span>:        <span class="number">62.83</span>
+  },
+  <span class="key">"insights"</span>: [
+    <span class="string">"[Region] North has the highest dropout rate at 42.5%"</span>,
+    <span class="string">"[Age] Age group 16-20 shows the highest dropout risk at 38.1%"</span>,
+    <span class="string">"[Alert] Students with attendance below 60% have a 65.0% dropout rate"</span>
+  ]
+}
+                </div>
+
+                <p class="api-card-label">Response Fields</p>
+                <table class="fields-table">
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>status</code></td>
+                            <td><span class="type-tag type-string">string</span></td>
+                            <td><code>"success"</code> or absent on error</td>
+                        </tr>
+                        <tr>
+                            <td><code>statistics.total_students</code></td>
+                            <td><span class="type-tag type-int">int</span></td>
+                            <td>Total number of students in the dataset</td>
+                        </tr>
+                        <tr>
+                            <td><code>statistics.total_dropouts</code></td>
+                            <td><span class="type-tag type-int">int</span></td>
+                            <td>Number of students who dropped out</td>
+                        </tr>
+                        <tr>
+                            <td><code>statistics.dropout_rate</code></td>
+                            <td><span class="type-tag type-float">float</span></td>
+                            <td>Percentage of students who dropped out (0–100)</td>
+                        </tr>
+                        <tr>
+                            <td><code>statistics.at_risk</code></td>
+                            <td><span class="type-tag type-int">int</span></td>
+                            <td>Count of students classified as High Risk</td>
+                        </tr>
+                        <tr>
+                            <td><code>statistics.re_enrolled</code></td>
+                            <td><span class="type-tag type-int">int</span></td>
+                            <td>Estimated re-enrolled students (simulated)</td>
+                        </tr>
+                        <tr>
+                            <td><code>statistics.avg_attendance</code></td>
+                            <td><span class="type-tag type-float">float</span></td>
+                            <td>Mean attendance rate across all students</td>
+                        </tr>
+                        <tr>
+                            <td><code>statistics.avg_score</code></td>
+                            <td><span class="type-tag type-float">float</span></td>
+                            <td>Mean academic score across all students</td>
+                        </tr>
+                        <tr>
+                            <td><code>insights</code></td>
+                            <td><span class="type-tag type-list">list</span></td>
+                            <td>Auto-generated human-readable insight strings</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p class="api-card-label">Error Responses</p>
+                <div class="status-codes">
+                    <span class="status-chip status-404">404 — No dataset available</span>
+                    <span class="status-chip status-500">500 — Internal server error</span>
+                </div>
+
+                <div class="code-block" id="codeBlock3" style="margin-top: 0.75rem;">
+                    <button class="copy-btn" onclick="copyCode('codeBlock3')">Copy</button>
+<span class="comment">// 404 Response</span>
+{
+  <span class="key">"error"</span>: <span class="string">"No dataset available. Please upload a CSV file."</span>
+}
+
+<span class="comment">// 500 Response</span>
+{
+  <span class="key">"error"</span>: <span class="string">"&lt;error message details&gt;"</span>
+}
+                </div>
+
+                <a href="/api/stats" target="_blank" class="try-btn">
+                    <i data-lucide="external-link" style="width:16px;height:16px;"></i> Try it Live
+                </a>
+            </div>
+
+            <!-- API Endpoint 2: POST /upload -->
+            <div class="api-card">
+                <div class="api-card-header">
+                    <span class="method-badge method-post">POST</span>
+                    <span class="api-endpoint">/upload</span>
+                </div>
+                <p class="api-card-desc">
+                    Upload a CSV file for analysis. The uploaded file will be validated, columns will be flexibly mapped, and the data will be saved for use by the dashboard and API.
+                </p>
+
+                <p class="api-card-label">Request Format</p>
+                <div class="code-block" id="codeBlock4">
+                    <button class="copy-btn" onclick="copyCode('codeBlock4')">Copy</button>
+<span class="comment"># Using cURL</span>
+<span class="url">curl</span> -X POST -F <span class="string">"file=@students.csv"</span> http://127.0.0.1:5000/upload
+
+<span class="comment"># Using Python</span>
+<span class="key">import</span> requests
+<span class="key">with</span> <span class="key">open</span>(<span class="string">"students.csv"</span>, <span class="string">"rb"</span>) <span class="key">as</span> f:
+    response = requests.<span class="key">post</span>(
+        <span class="string">"http://127.0.0.1:5000/upload"</span>,
+        files={<span class="string">"file"</span>: f}
+    )
+                </div>
+
+                <p class="api-card-label">Parameters</p>
+                <table class="fields-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>file</code></td>
+                            <td><span class="type-tag type-object">file</span></td>
+                            <td>CSV file (max 16 MB). Content-Type: <code>multipart/form-data</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p class="api-card-label">Behavior</p>
+                <ul style="margin-left: 1.2rem; color: #475569; font-size: 0.95rem; line-height: 1.8;">
+                    <li>On <strong>success</strong>: redirects to <code>/</code> (HTTP 302)</li>
+                    <li>On <strong>validation error</strong>: re-renders the upload page with an error message</li>
+                    <li>Accepted format: <code>.csv</code> only</li>
+                </ul>
+            </div>
+
+            <!-- API Endpoint 3: GET /clear-data -->
+            <div class="api-card">
+                <div class="api-card-header">
+                    <span class="method-badge method-get">GET</span>
+                    <span class="api-endpoint">/clear-data</span>
+                </div>
+                <p class="api-card-desc">
+                    Clears the currently uploaded dataset and reverts the platform to use the default system dataset. Redirects to the home page.
+                </p>
+
+                <p class="api-card-label">Example Request</p>
+                <div class="code-block" id="codeBlock5">
+                    <button class="copy-btn" onclick="copyCode('codeBlock5')">Copy</button>
+<span class="url">curl</span> http://127.0.0.1:5000/clear-data
+                </div>
+
+                <p class="api-card-label">Behavior</p>
+                <ul style="margin-left: 1.2rem; color: #475569; font-size: 0.95rem; line-height: 1.8;">
+                    <li>Deletes <code>data/uploads/uploaded_data.csv</code> if it exists</li>
+                    <li>Redirects to <code>/</code> (HTTP 302)</li>
+                    <li>Falls back gracefully if the file is locked by another process</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ========== PAGE ROUTES ========== -->
+        <section class="doc-section" id="page-routes">
+            <h2><i data-lucide="layout"></i> Page Routes</h2>
+            <p>All front-end HTML pages served by DropSence:</p>
+
+            <table class="fields-table" style="margin-top: 1rem;">
+                <thead>
+                    <tr>
+                        <th>Route</th>
+                        <th>Method</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>/</code></td>
+                        <td><span class="method-badge method-get" style="padding:0.15rem 0.5rem;font-size:0.7rem;">GET</span></td>
+                        <td>Landing page — upload interface and quick access to dashboard</td>
+                    </tr>
+                    <tr>
+                        <td><code>/dashboard</code></td>
+                        <td><span class="method-badge method-get" style="padding:0.15rem 0.5rem;font-size:0.7rem;">GET</span></td>
+                        <td>Main analytics dashboard — stats, at-risk table, recommendations</td>
+                    </tr>
+                    <tr>
+                        <td><code>/visual-analytics</code></td>
+                        <td><span class="method-badge method-get" style="padding:0.15rem 0.5rem;font-size:0.7rem;">GET</span></td>
+                        <td>Visual charts — region, age, yearly, gender, attendance analysis</td>
+                    </tr>
+                    <tr>
+                        <td><code>/about</code></td>
+                        <td><span class="method-badge method-get" style="padding:0.15rem 0.5rem;font-size:0.7rem;">GET</span></td>
+                        <td>About the DropSence platform and mission</td>
+                    </tr>
+                    <tr>
+                        <td><code>/documentation</code></td>
+                        <td><span class="method-badge method-get" style="padding:0.15rem 0.5rem;font-size:0.7rem;">GET</span></td>
+                        <td>This page — developer and user documentation</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ========== ARCHITECTURE ========== -->
+        <section class="doc-section" id="architecture">
+            <h2><i data-lucide="cpu"></i> Backend Architecture</h2>
+            <p>
+                Built on <strong>Python Flask</strong>, DropSence uses <strong>Pandas &amp; NumPy</strong> for vectorized data processing and <strong>Matplotlib / Seaborn</strong> for server-side chart generation.
+            </p>
+
+            <p class="api-card-label" style="margin-top: 1.5rem;">Core Components</p>
+            <table class="fields-table">
+                <thead>
+                    <tr>
+                        <th>Module</th>
+                        <th>Responsibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>DataAnalyzer</code></td>
+                        <td>Loads CSV, cleans data, computes statistics, generates insights, classifies risk levels</td>
+                    </tr>
+                    <tr>
+                        <td><code>ChartGenerator</code></td>
+                        <td>Creates 5 matplotlib/seaborn charts (region, age, yearly, gender, attendance scatter)</td>
+                    </tr>
+                    <tr>
+                        <td><code>map_columns_flexibly()</code></td>
+                        <td>Intelligent column name matching — maps user CSV headers to expected columns</td>
+                    </tr>
+                    <tr>
+                        <td><code>prepare_default_dataset()</code></td>
+                        <td>Initializes the default analytics database on first run or generates synthetic fallback data</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="api-card-label" style="margin-top: 1.5rem;">Tech Stack</p>
+            <ul>
+                <li><strong>Framework:</strong> Flask 3.x</li>
+                <li><strong>Data Processing:</strong> Pandas, NumPy</li>
+                <li><strong>Visualization:</strong> Matplotlib, Seaborn</li>
+                <li><strong>Dataset Source:</strong> Education Analytics Repository (Synthetic + Historical)</li>
+                <li><strong>Frontend:</strong> Jinja2 templates, vanilla CSS, Lucide icons</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                © 2026 DropSence Analytics Dashboard | Driven by Data Science
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        (function() {
+            const savedTheme = localStorage.getItem('dropsence-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                const current = document.documentElement.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                localStorage.setItem('dropsence-theme', next);
+            });
+        }
+
+        lucide.createIcons();
+
+        // Smooth scroll to sections
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            // Update active tab
+            document.querySelectorAll('.doc-nav-link').forEach(link => link.classList.remove('active-tab'));
+            event.target.classList.add('active-tab');
+        }
+
+        // Copy code block text
+        function copyCode(blockId) {
+            const block = document.getElementById(blockId);
+            const text = block.innerText.replace('Copy', '').trim();
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = block.querySelector('.copy-btn');
+                const original = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(() => { btn.textContent = original; }, 2000);
+            });
+        }
+
+        // Highlight active nav tab on scroll
+        const sections = ['getting-started', 'data-upload', 'risk-logic', 'api-reference', 'architecture'];
+        window.addEventListener('scroll', () => {
+            let current = '';
+            for (const id of sections) {
+                const section = document.getElementById(id);
+                if (section && section.getBoundingClientRect().top <= 180) {
+                    current = id;
+                }
+            }
+            if (current) {
+                document.querySelectorAll('.doc-nav-link').forEach(link => {
+                    link.classList.remove('active-tab');
+                    if (link.getAttribute('onclick')?.includes(current)) {
+                        link.classList.add('active-tab');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+Age,Gender,Attendance,Score,Dropout,Region,School,Year
+15,Male,85,78,No,North,High School A,2024
+16,Female,92,88,No,South,High School B,2024
+14,Male,45,55,Yes,East,High School C,2024
+17,Female,70,62,No,West,High School A,2024
+15,Female,55,48,Yes,North,High School B,2024
+16,Male,88,82,No,South,High School C,2024
+14,Female,95,91,No,East,High School A,2024
+17,Male,40,42,Yes,West,High School B,2024
+15,Male,75,70,No,North,High School C,2024
+16,Female,60,58,Yes,South,High School A,2024

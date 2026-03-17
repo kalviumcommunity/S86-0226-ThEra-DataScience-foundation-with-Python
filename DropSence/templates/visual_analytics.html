@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drop Sence - Visual Analytics</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff7300' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><line x1='6' y1='20' x2='6' y2='15'/><line x1='12' y1='20' x2='12' y2='4'/><line x1='18' y1='20' x2='18' y2='10'/></svg>">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="nav-brand">
+                <i data-lucide="bar-chart-2"></i> DropSence
+            </a>
+            <ul class="nav-links">
+                <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="/visual-analytics" class="nav-link active">Visual Analytics</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
+                <li><a href="/documentation" class="nav-link">Documentation</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+                        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1 class="header-title"><i data-lucide="trending-up" style="display:inline;vertical-align:middle;width:32px;height:32px;"></i> Visual Analytics</h1>
+            <p class="header-subtitle">Deep Dive into Education Dropout Patterns and Trends</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Visual Analytics Section -->
+        <section class="charts-section">
+
+            <!-- Charts Grid -->
+            <div class="charts-grid">
+
+                <div class="chart-card" onclick="expandCard(this)">
+                    <button class="btn-close-fullscreen" onclick="closeFullscreen(event, this.parentElement)">&times;</button>
+                    <div class="chart-header">
+                        <h3 class="chart-title">Dropout Rate by Region</h3>
+                    </div>
+                    <div class="chart-card-inner">
+                        <div class="chart-content" style="position: relative; height: 300px; width: 100%;">
+                            <canvas id="regionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-card" onclick="expandCard(this)">
+                    <button class="btn-close-fullscreen" onclick="closeFullscreen(event, this.parentElement)">&times;</button>
+                    <div class="chart-header">
+                        <h3 class="chart-title">Dropout Rate by Age Group</h3>
+                    </div>
+                    <div class="chart-card-inner">
+                        <div class="chart-content" style="position: relative; height: 300px; width: 100%;">
+                            <canvas id="ageGroupChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-card" onclick="expandCard(this)">
+                    <button class="btn-close-fullscreen" onclick="closeFullscreen(event, this.parentElement)">&times;</button>
+                    <div class="chart-header">
+                        <h3 class="chart-title">Yearly Dropout Trend</h3>
+                    </div>
+                    <div class="chart-card-inner">
+                        <div class="chart-content" style="position: relative; height: 300px; width: 100%;">
+                            <canvas id="yearlyTrendChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-card" onclick="expandCard(this)">
+                    <button class="btn-close-fullscreen" onclick="closeFullscreen(event, this.parentElement)">&times;</button>
+                    <div class="chart-header">
+                        <h3 class="chart-title">Dropout Distribution by Gender</h3>
+                    </div>
+                    <div class="chart-card-inner">
+                        <div class="chart-content" style="position: relative; height: 300px; width: 100%;">
+                            <canvas id="genderChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-card chart-card-wide" onclick="expandCard(this)">
+                    <button class="btn-close-fullscreen" onclick="closeFullscreen(event, this.parentElement)">&times;</button>
+                    <div class="chart-header">
+                        <h3 class="chart-title">Attendance vs Academic Performance</h3>
+                    </div>
+                    <div class="chart-card-inner">
+                        <div class="chart-content" style="position: relative; height: 400px; width: 100%;">
+                            <canvas id="attendanceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- Fullscreen Card Overlay -->
+    <div id="cardOverlay" class="card-overlay" onclick="closeActiveFullscreen()"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                © 2026 DropSence Analytics Dashboard | Driven by Data Science
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        (function() {
+            const savedTheme = localStorage.getItem('dropsence-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                const current = document.documentElement.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                localStorage.setItem('dropsence-theme', next);
+            });
+        }
+
+        // Expansion Logic
+        const overlay = document.getElementById("cardOverlay");
+        let activeCard = null;
+
+        function expandCard(card) {
+            if (activeCard) return; // Already one open
+            
+            activeCard = card;
+            card.classList.add("fullscreen");
+            overlay.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeFullscreen(event, card) {
+            if (event) event.stopPropagation();
+            
+            card.classList.remove("fullscreen");
+            overlay.classList.remove("active");
+            document.body.style.overflow = "auto";
+            activeCard = null;
+        }
+
+        function closeActiveFullscreen() {
+            if (activeCard) {
+                closeFullscreen(null, activeCard);
+            }
+        }
+
+        // Close on Escape key
+        document.onkeydown = function(evt) {
+            if (evt.key === "Escape") {
+                closeActiveFullscreen();
+            }
+        };
+
+        lucide.createIcons();
+
+        // Chart.js Data Parsing and Initializations
+        const regionData = {{ region_data | tojson | safe }};
+        const ageData = {{ age_data | tojson | safe }};
+        const yearData = {{ year_data | tojson | safe }};
+        const genderData = {{ gender_data | tojson | safe }};
+        const scatterData = {{ scatter_data | tojson | safe }};
+
+        function isDarkTheme() {
+            return document.documentElement.getAttribute('data-theme') === 'dark';
+        }
+
+        // Theme sync for charts
+        function getChartColors() {
+            const isDark = isDarkTheme();
+            return {
+                text: isDark ? '#e0e0e0' : '#333333',
+                grid: isDark ? '#444444' : '#e0e0e0',
+                backgrounds: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(153, 102, 255, 0.7)',
+                    'rgba(255, 159, 64, 0.7)'
+                ],
+                borders: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ]
+            };
+        }
+
+        Chart.defaults.color = getChartColors().text;
+        Chart.defaults.font.family = "'Inter', 'Segoe UI', Roboto, sans-serif";
+        Chart.defaults.maintainAspectRatio = false;
+
+        let charts = {};
+
+        function initCharts() {
+            const colors = getChartColors();
+            Chart.defaults.color = colors.text;
+
+            // 1. Region Chart (Bar)
+            if (charts.region) charts.region.destroy();
+            charts.region = new Chart(document.getElementById('regionChart'), {
+                type: 'bar',
+                data: {
+                    labels: regionData.map(d => d.Region),
+                    datasets: [{
+                        label: 'Dropout Rate (%)',
+                        data: regionData.map(d => d.Dropout_Rate),
+                        backgroundColor: 'rgba(231, 76, 60, 0.7)',
+                        borderColor: 'rgba(231, 76, 60, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: colors.grid } },
+                        x: { grid: { color: colors.grid } }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            // 2. Age Group Chart (Bar)
+            if (charts.ageGroup) charts.ageGroup.destroy();
+            charts.ageGroup = new Chart(document.getElementById('ageGroupChart'), {
+                type: 'bar',
+                data: {
+                    labels: ageData.map(d => String(d.Age_Group)),
+                    datasets: [{
+                        label: 'Dropout Rate (%)',
+                        data: ageData.map(d => d.Dropout_Rate),
+                        backgroundColor: 'rgba(52, 152, 219, 0.7)',
+                        borderColor: 'rgba(52, 152, 219, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: colors.grid } },
+                        x: { grid: { color: colors.grid } }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            // 3. Yearly Trend Chart (Line)
+            if (charts.yearlyTrend) charts.yearlyTrend.destroy();
+            charts.yearlyTrend = new Chart(document.getElementById('yearlyTrendChart'), {
+                type: 'line',
+                data: {
+                    labels: yearData.map(d => String(d.Year)),
+                    datasets: [{
+                        label: 'Dropout Rate (%)',
+                        data: yearData.map(d => d.Dropout_Rate),
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.2)',
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: colors.grid } },
+                        x: { grid: { color: colors.grid } }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            // 4. Gender Chart (Pie)
+            if (charts.gender) charts.gender.destroy();
+            charts.gender = new Chart(document.getElementById('genderChart'), {
+                type: 'pie',
+                data: {
+                    labels: genderData.map(d => d.Gender),
+                    datasets: [{
+                        data: genderData.map(d => d.Dropouts),
+                        backgroundColor: ['#3498db', '#e74c3c', '#f39c12'],
+                        borderWidth: 1,
+                        borderColor: isDarkTheme() ? '#1a1a2e' : '#fff'
+                    }]
+                },
+                options: {
+                    plugins: { legend: { position: 'bottom', labels: { color: colors.text } } }
+                }
+            });
+
+            // 5. Attendance vs Score Scatter Chart
+            if (charts.attendance) charts.attendance.destroy();
+            
+            const retainedData = scatterData.filter(d => d.Dropout_Binary === 0).map(d => ({x: d.Attendance, y: d.Score}));
+            const dropoutData = scatterData.filter(d => d.Dropout_Binary === 1).map(d => ({x: d.Attendance, y: d.Score}));
+
+            charts.attendance = new Chart(document.getElementById('attendanceChart'), {
+                type: 'scatter',
+                data: {
+                    datasets: [
+                        {
+                            label: 'Retained',
+                            data: retainedData,
+                            backgroundColor: 'rgba(46, 204, 113, 0.4)',
+                            borderColor: 'transparent',
+                            borderWidth: 0,
+                            pointRadius: 3,
+                            pointHoverRadius: 5
+                        },
+                        {
+                            label: 'Dropout',
+                            data: dropoutData,
+                            backgroundColor: 'rgba(231, 76, 60, 0.4)',
+                            borderColor: 'transparent',
+                            borderWidth: 0,
+                            pointRadius: 3,
+                            pointHoverRadius: 5
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        y: { 
+                            title: { display: true, text: 'Academic Score', color: colors.text },
+                            grid: { color: colors.grid }
+                        },
+                        x: { 
+                            title: { display: true, text: 'Attendance Rate (%)', color: colors.text },
+                            grid: { color: colors.grid }
+                        }
+                    },
+                    plugins: { legend: { labels: { color: colors.text } } }
+                }
+            });
+        }
+
+        initCharts();
+
+        // Update charts when theme toggles
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                setTimeout(initCharts, 50);
+            });
+        }
+    </script>
+</body>
+</html>

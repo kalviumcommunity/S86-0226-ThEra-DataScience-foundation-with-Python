@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drop Sence - Error</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff7300' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><line x1='6' y1='20' x2='6' y2='15'/><line x1='12' y1='20' x2='12' y2='4'/><line x1='18' y1='20' x2='18' y2='10'/></svg>">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="nav-brand">
+                <i data-lucide="bar-chart-2"></i> DropSence
+            </a>
+            <ul class="nav-links">
+                <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="/visual-analytics" class="nav-link">Visual Analytics</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
+                <li><a href="/documentation" class="nav-link">Documentation</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+                        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1 class="header-title"><i data-lucide="bar-chart-3" style="display:inline;vertical-align:middle;width:32px;height:32px;"></i> Education Dropout Analytics Dashboard</h1>
+            <p class="header-subtitle">Data-Driven Insights for NGO Education Programs</p>
+        </div>
+    </header>
+
+    <!-- Error Container -->
+    <div class="container">
+        <div class="error-container">
+            <div class="error-icon"><i data-lucide="alert-triangle" style="width:56px;height:56px;color:#f59e0b;"></i></div>
+            <h2 class="error-title">Oops! Something went wrong</h2>
+            <p class="error-message">{{ error_message }}</p>
+
+            <div class="error-help">
+                <h3>Need Help?</h3>
+                <ul>
+                    <li>Ensure the <code>data/education_data.csv</code> file exists</li>
+                    <li>Verify the CSV file contains all required columns</li>
+                    <li>Check that the dataset is not empty</li>
+                    <li>Ensure all dependencies are installed: <code>pip install -r requirements.txt</code></li>
+                    <li><strong>Windows File Locked?</strong> Restart Flask server with <code>Ctrl+C</code> then
+                        <code>python app.py</code></li>
+                </ul>
+                <p
+                    style="margin-top: 1rem; padding: 1rem; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px;">
+                    <strong><i data-lucide="lightbulb" style="display:inline;vertical-align:middle;width:16px;height:16px;color:#f59e0b;"></i> Common Issue:</strong> If you see "file is being used by another process",
+                    simply restart the Flask server (Ctrl+C, then python app.py) and try again.
+                </p>
+            </div>
+
+            <a href="/" class="error-button">Try Again</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                © 2026 Education Dropout Analytics Dashboard |
+                Powered by Python Flask & Data Science
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        (function() {
+            const savedTheme = localStorage.getItem('dropsence-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                const current = document.documentElement.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                localStorage.setItem('dropsence-theme', next);
+            });
+        }
+        
+        if (typeof lucide !== 'undefined') { lucide.createIcons(); }
+    </script>
+</body>
+
+</html>

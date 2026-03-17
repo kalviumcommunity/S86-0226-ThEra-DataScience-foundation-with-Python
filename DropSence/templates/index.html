@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drop Sence - Upload Data</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff7300' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><line x1='6' y1='20' x2='6' y2='15'/><line x1='12' y1='20' x2='12' y2='4'/><line x1='18' y1='20' x2='18' y2='10'/></svg>">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="nav-brand">
+                <i data-lucide="bar-chart-2"></i> DropSence
+            </a>
+            <ul class="nav-links">
+                <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="/visual-analytics" class="nav-link">Visual Analytics</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
+                <li><a href="/documentation" class="nav-link">Documentation</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+                        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1 class="header-title"><i data-lucide="bar-chart-3" style="display:inline;vertical-align:middle;width:32px;height:32px;"></i> Education Dropout Analytics Dashboard</h1>
+            <p class="header-subtitle">Data-Driven Insights for NGO Education Programs</p>
+        </div>
+    </header>
+
+    <!-- Main Upload Container -->
+    <div class="container">
+        {% if has_data %}
+        <!-- Data Available - Show Options -->
+        <section class="upload-section">
+            <div class="upload-container">
+                <div class="upload-icon success"><i data-lucide="circle-check-big" style="width:48px;height:48px;color:#10b981;"></i></div>
+                <h2 class="upload-title">Dashboard Ready!</h2>
+                <p class="upload-subtitle">Currently using education data for analysis.</p>
+
+                <div class="action-buttons">
+                    <a href="/dashboard" class="btn btn-primary btn-large">
+                        <i data-lucide="layout-dashboard" style="display:inline;vertical-align:middle;width:18px;height:18px;"></i> View Dashboard
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider">
+            <span>OR UPLOAD NEW</span>
+        </div>
+        {% endif %}
+
+        <!-- Always Show Upload Form -->
+        <section class="upload-section" id="upload-form">
+            <div class="upload-container">
+                <div class="upload-icon"><i data-lucide="upload-cloud" style="width:48px;height:48px;color:#6366f1;"></i></div>
+                <h2 class="upload-title">{% if has_data %}Upload New Dataset{% else %}Upload Your Education Data{% endif
+                    %}</h2>
+                <p class="upload-subtitle">Upload a CSV file to analyze dropout trends and patterns. Your file will be
+                    processed and mapped automatically.</p>
+
+                {% if error %}
+                <div class="alert alert-error">
+                    <strong><i data-lucide="alert-triangle" style="display:inline;vertical-align:middle;width:16px;height:16px;"></i> Error:</strong> {{ error }}
+                </div>
+                {% endif %}
+
+                <!-- Upload Form -->
+                <form action="/upload" method="post" enctype="multipart/form-data" class="upload-form">
+                    <div class="file-upload-wrapper">
+                        <input type="file" name="file" id="file" accept=".csv" class="file-input" required>
+                        <label for="file" class="file-label">
+                            <span class="file-icon"><i data-lucide="folder-open" style="display:inline;vertical-align:middle;width:18px;height:18px;"></i></span>
+                            <span class="file-text">Choose CSV File</span>
+                        </label>
+                        <span id="file-name" class="file-name">No file selected</span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">
+                        <span><i data-lucide="sparkles" style="display:inline;vertical-align:middle;width:18px;height:18px;"></i> Process & Analyze</span>
+                    </button>
+                </form>
+
+                {% if not has_data %}
+                <!-- Or use default data -->
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+                <a href="/dashboard" class="btn btn-secondary">
+                    <i data-lucide="database" style="display:inline;vertical-align:middle;width:16px;height:16px;"></i> Use Default Dataset
+                </a>
+                {% endif %}
+            </div>
+        </section>
+
+        <!-- CSV Format Requirements -->
+        <section class="info-section">
+            <h2 class="section-title"><i data-lucide="clipboard-list"></i> CSV File Requirements</h2>
+
+            <div class="alert alert-info" style="margin-bottom: 2rem;">
+                <strong><i data-lucide="sparkles" style="display:inline;vertical-align:middle;width:16px;height:16px;"></i> Flexible Upload!</strong> The system intelligently recognizes your column names - you don't
+                need exact matches!
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3 class="info-card-title">Required Data (Any Column Name)</h3>
+                    <ul class="requirements-list">
+                        <li><strong>Age</strong> - Student age (numeric) - also accepts: "Years", "StudentAge"</li>
+                        <li><strong>Gender</strong> - Male/Female - also accepts: "Sex", "M/F"</li>
+                        <li><strong>Attendance</strong> - Percentage (0-100) - also accepts: "AttendanceRate",
+                            "Present%"</li>
+                        <li><strong>Score</strong> - Academic score - also accepts: "Marks", "Grade", "TestScore"</li>
+                        <li><strong>Dropout</strong> - Yes/No - also accepts: "Status", "Left", "Discontinued"</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                        <i data-lucide="lightbulb" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#f59e0b;"></i> <strong>Auto-Generated (if missing):</strong> StudentID, School, Region, Year
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3 class="info-card-title">Example CSV Format</h3>
+                    <pre class="csv-example">Age,Gender,Attendance,Score,Dropout
+14,Male,85,78,No
+15,Female,92,85,No
+16,Male,45,52,Yes
+13,Female,88,82,No</pre>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #28a745;">
+                        <i data-lucide="check" style="display:inline;vertical-align:middle;width:14px;height:14px;"></i> This minimal format works! System auto-generates missing fields.
+                    </p>
+                    <a href="{{ url_for('static', filename='sample_template.csv') }}" download
+                        class="btn btn-small btn-outline" style="margin-top: 1rem;">
+                        <i data-lucide="download" style="display:inline;vertical-align:middle;width:14px;height:14px;"></i> Download Full Template
+                    </a>
+                </div>
+
+                <div class="info-card">
+                    <h3 class="info-card-title">File Specifications</h3>
+                    <ul class="requirements-list">
+                        <li><strong>Format:</strong> CSV (.csv)</li>
+                        <li><strong>Max Size:</strong> 16 MB</li>
+                        <li><strong>Encoding:</strong> UTF-8 recommended</li>
+                        <li><strong>Min Records:</strong> At least 1 student</li>
+                        <li><strong>Headers:</strong> First row = column names</li>
+                        <li><strong>Column Names:</strong> Flexible! System auto-detects variations</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3 class="info-card-title">What You'll Get</h3>
+                    <ul class="requirements-list">
+                        <li><i data-lucide="bar-chart-3" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#6366f1;"></i> <strong>Key Statistics</strong> - Totals and rates</li>
+                        <li><i data-lucide="search" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#6366f1;"></i> <strong>Automated Insights</strong> - Risk patterns</li>
+                        <li><i data-lucide="trending-up" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#6366f1;"></i> <strong>5 Visual Charts</strong> - Trends and analysis</li>
+                        <li><i data-lucide="lightbulb" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#6366f1;"></i> <strong>Recommendations</strong> - Action items</li>
+                        <li><i data-lucide="plug" style="display:inline;vertical-align:middle;width:14px;height:14px;color:#6366f1;"></i> <strong>API Access</strong> - Export data as JSON</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                © 2026 Education Dropout Analytics Dashboard |
+                Powered by Python Flask & Data Science |
+                Built for NGO Education Programs
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for file input & theme toggle -->
+    <script>
+        // Theme Toggle
+        (function() {
+            const savedTheme = localStorage.getItem('dropsence-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('dropsence-theme', next);
+        });
+
+        // File Input
+        const fileInput = document.getElementById('file');
+        if (fileInput) {
+            fileInput.addEventListener('change', function (e) {
+                const fileName = e.target.files[0]?.name || 'No file selected';
+                document.getElementById('file-name').textContent = fileName;
+            });
+        }
+        if (typeof lucide !== 'undefined') { lucide.createIcons(); }
+    </script>
+
+</body>
+
+</html>
